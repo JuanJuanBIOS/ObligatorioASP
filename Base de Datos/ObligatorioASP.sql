@@ -8,7 +8,15 @@ begin
 end
 go
 
+--creo la base de datos
+create database Alquileres_Vehiculos
+go
+
+
+--selecciono la base de datos
 use Alquileres_Vehiculos
+go
+
 
 -- ------------------------------------------------------------------------------------------------
 -- CREACIÓN DE TABLAS 
