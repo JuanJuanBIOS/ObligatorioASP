@@ -126,6 +126,29 @@ go
 -- CREACIÓN DE STORED PROCEDURES
 -- -----------------------------------------------------------------------------------------------
 
+--Se crea procedimiento para búsuqueda de Clientes
+create procedure Buscar_Cliente
+--Se define la variable de entrada para la consulta
+@documento varchar(15)
+as
+--Se verifica que existe cliente
+if not exists(select * from Clientes where documento=@documento)
+	begin
+	return -1
+	end
+else
+	begin
+	select * from Clientes where documento=@documento
+	end
+
+
+
+
+
+
+
+
+
 -- Se crea procedimiento para eliminar Auto
 create procedure Eliminar_Auto
 -- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
