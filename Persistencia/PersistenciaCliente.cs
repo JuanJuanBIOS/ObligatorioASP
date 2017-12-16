@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using EntidadesCompartidas;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace Persistencia
 {
     public class PersistenciaCliente
     {
-        public static Cliente Buscar(string cedula)
+        public static Cliente Buscar(int cedula)
         {
             int oCedula;
             string oNombre;
-            int oTarjeta;
+            long oTarjeta;
             string oTelefono;
             string oDireccion;
             DateTime oFechaNac;
@@ -31,11 +32,15 @@ namespace Persistencia
 
                 if (oReader.Read())
                 {
-                    //oCedula = (int)oReader["documento"];
+
+                    oCedula = (int)oReader["documento"];
                     oNombre = (string)oReader["nombre"];
-                   // oTarjeta = (int)oReader["tarjeta"];
-                   // oTelefono = (string)oReader["telefono"];
-                   // oDireccion = (string)oReader["calle"];
+                    oTarjeta = (long)oReader["tarjeta"];
+                    oTelefono = (string)oReader["telefono"];
+                    oDireccion = (string)oReader["direccion"];
+                    oFechaNac = (DateTime)oReader["fechanac"];
+
+                    C = new Cliente(oNombre, oCedula, oTarjeta, oTelefono, oDireccion, oFechaNac);
                 }
                 oReader.Close();
             }

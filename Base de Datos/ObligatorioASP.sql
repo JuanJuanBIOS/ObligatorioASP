@@ -18,18 +18,19 @@ use Alquileres_Vehiculos
 go
 
 
+
 -- ------------------------------------------------------------------------------------------------
 -- CREACIÓN DE TABLAS 
 -- ------------------------------------------------------------------------------------------------
 
 -- Se crea la tabla de clientes
 create table Clientes(
-documento varchar(15) not null primary key,
-tarjeta varchar(16) not null unique,
+documento int not null primary key,
+tarjeta bigint not null unique,
 nombre varchar(30) not null,
-calle varchar(30),
-numerodepuerta int,
-telefono int,
+direccion varchar(50),
+telefono varchar(30),
+fechanac datetime not null,
 )
 
 -- Se crea la tabla vehículos
@@ -72,14 +73,14 @@ costo float not null,
 
 -- Se agregan datos a la tabla Clientes
 INSERT INTO Clientes VALUES
-('3155160','4967296361175687','Juan Perez','Avenida Italia',1548,45863458),
-('4167344','3393430860568847','Maria Gonzalez','Garibaldi',2453,098321548),
-('3809175','375659812386472','Santiago Rodriguez','Bvar Artigas',1483,26138597),
-('4598108','6248315518673216','Nicolas Lopez','Rivera',5427, 091653287),
-('1914310','5019021263067369','Valeria Rodriguez','Sarandi',254,52376981),
-('2548635','6372326355114261','Ana Martinez','18 de Julio',1236,095634888),
-('1248963','6901506975192728','Pedro Artigas','Sarandi',126,096324657),
-('2586951','5380502970150763','Julio Sanchez','8 de Octubre',5498,26138597)
+(3155160,4967296361175687,'Juan Perez','Avenida Italia 1548','45863458','12/15/1988'),
+(4167344,3393430860568847,'Maria Gonzalez','Garibaldi 2453','098321548','01/24/1968'),
+(3809175,375659812386472,'Santiago Rodriguez','Bvar Artigas 1483','26138597','07/14/1957'),
+(4598108,6248315518673216,'Nicolas Lopez','Rivera 5427', '091653287','04/03/1984'),
+(1914310,5019021263067369,'Valeria Rodriguez','Sarandi 254','52376981','09/18/1954'),
+(2548635,6372326355114261,'Ana Martinez','18 de Julio 1236','095634888','10/14/1990'),
+(1248963,6901506975192728,'Pedro Artigas','Sarandi 126','096324657','03/05/1975'),
+(2586951,5380502970150763,'Julio Sanchez','8 de Octubre 5498','26138597','09/04/1945')
 
 
 -- Se agregan datos a la tabla Vehículos

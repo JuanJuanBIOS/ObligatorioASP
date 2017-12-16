@@ -18,9 +18,23 @@ namespace ObligatorioASPNET
 
         }
 
-        protected void BtnInDocumento_Click(object sender, EventArgs e)
+
+        //FALTA ESTO!!!!!!!!!!!!!!!!!1
+        private void DesactivoBotones()
+        {
+            //.Enabled = false;
+            //BtnModificar.Enabled = false;
+            //btnBaja.Enabled = false;
+
+            //btnBuscar.Enabled = true;
+        }
+
+
+
+        protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             int cedula = 0;
+
             try
             {
                 cedula = Convert.ToInt32(TBInDocumento.Text);
@@ -39,10 +53,14 @@ namespace ObligatorioASPNET
                 {
                     TBNombre.Text = Cli.Nombre;
                     TBTarjeta.Text = Convert.ToString(Cli.Tarjeta);
-                    TBTelefono.Text = Cli.Telefono;
+                    TBTelefono.Text = Convert.ToString(Cli.Telefono);
                     TBDireccion.Text = Cli.Direccion;
                     TBFechaNac.Text = Convert.ToString(Cli.FechaNac);
 
+                }
+                else
+                {
+                    LblError.Text = "Objeto es nulo";
                 }
             }
             catch (Exception ex)
@@ -50,5 +68,6 @@ namespace ObligatorioASPNET
                 LblError.Text = ex.Message;
             }
         }
+
     }
 }

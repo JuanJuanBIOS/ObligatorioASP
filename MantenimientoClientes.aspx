@@ -23,8 +23,8 @@
         <asp:Label ID="LblInDocumento" runat="server" Text="Ingrese documento:"></asp:Label>
         <asp:TextBox ID="TBInDocumento" runat="server"></asp:TextBox>
         <asp:Label ID="LblError" runat="server" ForeColor="Red"></asp:Label>
-        <asp:Button ID="BtnInDocumento" runat="server" Text="Buscar" 
-            onclick="BtnInDocumento_Click" />
+        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" 
+            onclick="BtnBuscar_Click" />
         <br />
         <br />
         <br />
@@ -69,6 +69,15 @@
                     &nbsp;</td>
                 <td>
                     &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    <asp:Button ID="BtnCrear" runat="server" Text="Crear" />
+                    <asp:Button ID="BtnModificar" runat="server" Text="Modificar" Width="79px" />
+                </td>
+                <td>
+                    <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" />
+                </td>
             </tr>
         </table>
         <br />

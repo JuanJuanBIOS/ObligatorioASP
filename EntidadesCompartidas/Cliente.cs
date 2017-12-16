@@ -10,7 +10,7 @@ namespace EntidadesCompartidas
         //Atributos
         private int _Cedula; 
         private string _Nombre;
-        private int _Tarjeta;
+        private long _Tarjeta;
         private string _Telefono;
         private string _Direccion;
         private DateTime _FechaNac;
@@ -44,7 +44,7 @@ namespace EntidadesCompartidas
             }
             set
             {
-                if (value >= 10000000 && value <= 99999999)
+                if (value >= 100000 && value <= 99999999)
                 {
                     _Cedula = value;
 
@@ -56,7 +56,7 @@ namespace EntidadesCompartidas
             }
         }
 
-        public int Tarjeta
+        public long Tarjeta
         {
             get
             {
@@ -137,7 +137,7 @@ namespace EntidadesCompartidas
         }
 
         //Constructores
-        public Cliente(string pNombre, int pCedula, int pTarjeta, string pTelefono, string pDireccion, DateTime pFechanac) 
+        public Cliente(string pNombre, int pCedula, long pTarjeta, string pTelefono, string pDireccion, DateTime pFechanac) 
         {
             Nombre = pNombre;
             Cedula = pCedula;
