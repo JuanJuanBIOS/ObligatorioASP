@@ -140,13 +140,13 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logica\Logica.csproj">
-      <Project>{358E7201-5366-487B-B3A2-133F0DD11393}</Project>
-      <Name>Logica</Name>
-    </ProjectReference>
     <ProjectReference Include="EntidadesCompartidas\EntidadesCompartidas.csproj">
       <Project>{9D6FB41C-2D57-4274-840A-4C3E9EC90E90}</Project>
       <Name>EntidadesCompartidas</Name>
+    </ProjectReference>
+    <ProjectReference Include="Logica\Logica.csproj">
+      <Project>{358E7201-5366-487B-B3A2-133F0DD11393}</Project>
+      <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
