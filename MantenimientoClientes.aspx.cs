@@ -19,7 +19,7 @@ namespace ObligatorioASPNET
         }
 
 
-        //FALTA ESTO!!!!!!!!!!!!!!!!!1
+        //FALTA ESTO!!!!!!!!!!!!!!!!!
         private void DesactivoBotones()
         {
             //.Enabled = false;
