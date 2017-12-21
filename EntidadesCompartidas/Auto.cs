@@ -33,7 +33,7 @@ namespace EntidadesCompartidas
 
         //Constructor
         public Auto(string pMatricula, string pMarca, string pModelo, int pAño, int pCantPuerta, int pCostoAlquiler, string pSillaTipo)
-            :base(pMatricula, pMarca, pModelo, pAño, pCantPuerta, pCostoAlquiler)
+            :base(pMatricula, pMarca, pModelo, pAño, pCantPuerta, pCostoAlquiler, pCategoria)
         {
             TipoA = pSillaTipo;
         }

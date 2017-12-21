@@ -15,6 +15,7 @@ namespace EntidadesCompartidas
         private int _Año;
         private int _CantPuertas;
         private int _CostoAlquiler;
+        private string _Categoria;
 
         //Propiedades
         public string Matricula
@@ -153,15 +154,37 @@ namespace EntidadesCompartidas
             }
         }
 
+        public string Categoria
+        {
+            get
+            {
+                return _Categoria;
+            }
+            set
+            {
+                if (value.ToLower() == "auto" || value.ToLower() == "utilitario")
+                {
+                    _Categoria = value;
+                }
+                else
+                {
+                    throw new Exception("Error: la categoría debe ser 'Auto' o 'Utilitario'");
+                }
+
+            }
+        }
+
+
         //Constructor
-        public Vehiculo(string pMatricula, string pMarca, string pModelo, int pAño, int pCantPuerta, int pCostoAlquiler)
+        public Vehiculo(string pMatricula, string pMarca, string pModelo, int pAño, int pCantPuerta, int pCostoAlquiler, string pCategoria)
         {
             Matricula = pMatricula;
             Marca = pMarca;
             Modelo = pModelo;
             Año = pAño;
             CantPuertas = pCantPuerta;
-            CostoAlquiler = pCostoAlquiler; 
+            CostoAlquiler = pCostoAlquiler;
+            Categoria = pCategoria;
         }
 
         public override string ToString()

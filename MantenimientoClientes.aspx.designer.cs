@@ -40,93 +40,93 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.TextBox TBInDocumento;
         
         /// <summary>
-        /// LblError control.
+        /// LblErrorClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblError;
+        protected global::System.Web.UI.WebControls.Label LblErrorClientes;
         
         /// <summary>
-        /// BtnBuscar control.
+        /// BtnBuscarClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscar;
+        protected global::System.Web.UI.WebControls.Button BtnBuscarClientes;
         
         /// <summary>
-        /// TBNombre control.
+        /// TBNombreClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBNombre;
+        protected global::System.Web.UI.WebControls.TextBox TBNombreClientes;
         
         /// <summary>
-        /// TBTarjeta control.
+        /// TBTarjetaClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTarjeta;
+        protected global::System.Web.UI.WebControls.TextBox TBTarjetaClientes;
         
         /// <summary>
-        /// TBTelefono control.
+        /// TBTelefonoClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTelefono;
+        protected global::System.Web.UI.WebControls.TextBox TBTelefonoClientes;
         
         /// <summary>
-        /// TBDireccion control.
+        /// TBDireccionClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBDireccion;
+        protected global::System.Web.UI.WebControls.TextBox TBDireccionClientes;
         
         /// <summary>
-        /// TBFechaNac control.
+        /// TBFechaNacClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBFechaNac;
+        protected global::System.Web.UI.WebControls.TextBox TBFechaNacClientes;
         
         /// <summary>
-        /// BtnCrear control.
+        /// BtnCrearClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCrear;
+        protected global::System.Web.UI.WebControls.Button BtnCrearClientes;
         
         /// <summary>
-        /// BtnModificar control.
+        /// BtnModificarClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnModificar;
+        protected global::System.Web.UI.WebControls.Button BtnModificarClientes;
         
         /// <summary>
-        /// BtnEliminar control.
+        /// BtnEliminarClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEliminar;
+        protected global::System.Web.UI.WebControls.Button BtnEliminarClientes;
     }
 }

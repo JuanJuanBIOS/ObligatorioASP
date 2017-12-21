@@ -22,8 +22,8 @@
     
         <asp:Label ID="LblInDocumento" runat="server" Text="Ingrese documento:"></asp:Label>
         <asp:TextBox ID="TBInDocumento" runat="server"></asp:TextBox>
-        <asp:Label ID="LblError" runat="server" ForeColor="Red"></asp:Label>
-        <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" 
+        <asp:Label ID="LblErrorClientes" runat="server" ForeColor="Red"></asp:Label>
+        <asp:Button ID="BtnBuscarClientes" runat="server" Text="Buscar" 
             onclick="BtnBuscar_Click" />
         <br />
         <br />
@@ -33,35 +33,35 @@
                 <td class="style2">
                     Nombre:</td>
                 <td>
-                    <asp:TextBox ID="TBNombre" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBNombreClientes" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Tarjeta:</td>
                 <td>
-                    <asp:TextBox ID="TBTarjeta" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBTarjetaClientes" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Teléfono:</td>
                 <td>
-                    <asp:TextBox ID="TBTelefono" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBTelefonoClientes" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Dirección:</td>
                 <td>
-                    <asp:TextBox ID="TBDireccion" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBDireccionClientes" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Fecha de Nacimiento:</td>
                 <td>
-                    <asp:TextBox ID="TBFechaNac" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBFechaNacClientes" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -72,12 +72,12 @@
             </tr>
             <tr>
                 <td class="style2">
-                    <asp:Button ID="BtnCrear" runat="server" Text="Crear" />
-                    <asp:Button ID="BtnModificar" runat="server" Text="Modificar" Width="79px" 
+                    <asp:Button ID="BtnCrearClientes" runat="server" Text="Crear" />
+                    <asp:Button ID="BtnModificarClientes" runat="server" Text="Modificar" Width="79px" 
                         onclick="BtnModificar_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" />
+                    <asp:Button ID="BtnEliminarClientes" runat="server" Text="Eliminar" />
                 </td>
             </tr>
         </table>

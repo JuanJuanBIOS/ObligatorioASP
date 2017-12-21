@@ -7,8 +7,6 @@ using System.Web.UI.WebControls;
 using EntidadesCompartidas;
 using Logica;
 
-
-
 namespace ObligatorioASPNET
 {
     public partial class MantenimientoClientes : System.Web.UI.Page
@@ -23,10 +21,10 @@ namespace ObligatorioASPNET
         private void LimpioFormulario()
         {
             //Bloqueo botones si no hay registro
-            BtnCrear.Enabled = false;
-            BtnModificar.Enabled = false;
-            BtnEliminar.Enabled = false;
-            BtnBuscar.Enabled = true;
+            BtnCrearClientes.Enabled = false;
+            BtnModificarClientes.Enabled = false;
+            BtnEliminarClientes.Enabled = false;
+            BtnBuscarClientes.Enabled = true;
 
             TBInDocumento.Enabled = true;
         }
@@ -34,10 +32,10 @@ namespace ObligatorioASPNET
         private void ActivoBotonesBM()
         {
             //Activo botones solo para Baja y Modificacion
-            BtnCrear.Enabled = false;
-            BtnModificar.Enabled = true;
-            BtnEliminar.Enabled = true;
-            BtnBuscar.Enabled = false;
+            BtnCrearClientes.Enabled = false;
+            BtnModificarClientes.Enabled = true;
+            BtnEliminarClientes.Enabled = true;
+            BtnBuscarClientes.Enabled = false;
 
         }
 
@@ -52,7 +50,7 @@ namespace ObligatorioASPNET
             }
             catch
             {
-                LblError.Text = "Ingrese un numero";
+                LblErrorClientes.Text = "Ingrese un numero";
                 return;
             }
 
@@ -62,23 +60,23 @@ namespace ObligatorioASPNET
 
                 if (Cli != null)
                 {
-                    TBNombre.Text = Cli.Nombre;
-                    TBTarjeta.Text = Convert.ToString(Cli.Tarjeta);
-                    TBTelefono.Text = Convert.ToString(Cli.Telefono);
-                    TBDireccion.Text = Cli.Direccion;
-                    TBFechaNac.Text = Convert.ToString(Cli.FechaNac);
+                    TBNombreClientes.Text = Cli.Nombre;
+                    TBTarjetaClientes.Text = Convert.ToString(Cli.Tarjeta);
+                    TBTelefonoClientes.Text = Convert.ToString(Cli.Telefono);
+                    TBDireccionClientes.Text = Cli.Direccion;
+                    TBFechaNacClientes.Text = Convert.ToString(Cli.FechaNac);
                     this.ActivoBotonesBM();
 
 
                 }
                 else
                 {
-                    LblError.Text = "Objeto es nulo";
+                    LblErrorClientes.Text = "Objeto es nulo";
                 }
             }
             catch (Exception ex)
             {
-                LblError.Text = ex.Message;
+                LblErrorClientes.Text = ex.Message;
             }
         }
 
@@ -90,11 +88,11 @@ namespace ObligatorioASPNET
                 Cliente cli_m = (Cliente)Session["ClienteModificado"];
 
                 //modifico el objeto
-                cli_m.Nombre=TBNombre.Text;
+                cli_m.Nombre = TBNombreClientes.Text;
                 cli_m.Cedula=Convert.ToInt32(TBInDocumento.Text);
-                cli_m.Tarjeta = Convert.ToInt64(TBTarjeta.Text);
-                cli_m.Direccion = TBDireccion.Text;
-                cli_m.FechaNac = Convert.ToDateTime(TBFechaNac.Text);
+                cli_m.Tarjeta = Convert.ToInt64(TBTarjetaClientes.Text);
+                cli_m.Direccion = TBDireccionClientes.Text;
+                cli_m.FechaNac = Convert.ToDateTime(TBFechaNacClientes.Text);
                 this.ActivoBotonesBM();
                 //Cliente.Modificar(cli_m);
                 //lblError.Text = "Modificacion con éxito";

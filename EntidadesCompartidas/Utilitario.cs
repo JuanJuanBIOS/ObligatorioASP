@@ -53,7 +53,7 @@ namespace EntidadesCompartidas
 
         //Constructor
         public Utilitario(string pMatricula, string pMarca, string pModelo, int pAño, int pCantPuerta, int pCostoAlquiler, int pCapCarga, string pTipoUti)
-            :base (pMatricula, pMarca, pModelo, pAño, pCantPuerta, pCostoAlquiler)
+            :base (pMatricula, pMarca, pModelo, pAño, pCantPuerta, pCostoAlquiler, pCategoria)
         {
             CapCarga = pCapCarga;
             Tipo = pTipoUti; 

@@ -40,7 +40,7 @@ marca varchar(30),
 modelo varchar(30),
 anio int,
 cant_puertas int,
-costodiario float,
+costodiario int,
 categoria varchar(10),
 )
 
@@ -132,6 +132,7 @@ create procedure Buscar_Cliente
 --Se define la variable de entrada para la consulta
 @documento varchar(15)
 as
+begin
 --Se verifica que existe cliente
 if not exists(select * from Clientes where documento=@documento)
 	begin
