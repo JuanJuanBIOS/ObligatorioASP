@@ -96,13 +96,13 @@ namespace ObligatorioASPNET
                 cli_m.Direccion = TBDireccion.Text;
                 cli_m.FechaNac = Convert.ToDateTime(TBFechaNac.Text);
                 this.ActivoBotonesBM();
-                Cliente.Modificar(cli_m);
-                lblError.Text = "Modificacion con éxito";
-                this.LimpioFormulario();
+                //Cliente.Modificar(cli_m);
+                //lblError.Text = "Modificacion con éxito";
+                //this.LimpioFormulario();
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+               // lblError.Text = ex.Message;
             }
         }
 
