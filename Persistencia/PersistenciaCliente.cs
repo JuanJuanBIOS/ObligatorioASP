@@ -12,6 +12,7 @@ namespace Persistencia
     {
         public static Cliente Buscar(int cedula)
         {
+            //Propiedades
             int oCedula;
             string oNombre;
             long oTarjeta;
@@ -20,7 +21,8 @@ namespace Persistencia
             DateTime oFechaNac;
     
             Cliente C = null;
-
+            
+            //Variables de conexión
             SqlDataReader oReader;
             SqlConnection oConexion = new SqlConnection(Conexion.STR);
             SqlCommand oComando = new SqlCommand("Exec Buscar_Cliente "+ cedula, oConexion);

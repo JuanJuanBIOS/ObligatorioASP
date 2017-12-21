@@ -141,8 +141,63 @@ else
 	begin
 	select * from Clientes where documento=@documento
 	end
+End
 
 
+
+--Se crea procedimiento para Modificacion de Clientes
+create procedure Modificar_Cliente
+-- Se definen la variables de entrada al proceso, la cual va a ser la matrícula del vehículo
+
+@Ci int ,@Tarjeta bigint, @Nombre varchar(30), @Direccion varchar(50), @Telefono varchar(30), @Fechanac date AS
+BEGIN 
+	if Not(EXISTS (SELECT * FROM Viviendas WHERE PadronViv=@Padron))
+		RETURN -1
+
+	if Not(EXISTS(Select * From Duenios Where CiD = @duenio))
+		return -2
+		
+	--si llego aca puedo modificar
+	DECLARE @Error int
+	BEGIN TRAN
+
+	UPDATE Apartamentos 
+	SET PorteroApto = @Portero, PisoApto = @Piso, GCApto = @Gastos
+	WHERE PadronViv = @Padron
+	
+	SET @Error=@@ERROR;
+
+	UPDATE Viviendas 
+	SET DirViv = @Dir, FConsViv = @Fecha, PreAlqViv = @Precio, CiD = @duenio
+	WHERE PadronViv = @Padron
+	
+	SET @Error=@@ERROR+@Error;
+
+	IF(@Error=0)
+	BEGIN
+		COMMIT TRAN
+		RETURN 1
+	END
+	ELSE
+	BEGIN
+		ROLLBACK TRAN
+		RETURN -3
+	END	
+END
+
+
+--Se define la variable de entrada para la consulta
+@documento varchar(15)
+as
+--Se verifica que existe cliente
+if not exists(select * from Clientes where documento=@documento)
+	begin
+	return -1
+	end
+else
+	begin
+	select * from Clientes where documento=@documento
+	end
 
 
 

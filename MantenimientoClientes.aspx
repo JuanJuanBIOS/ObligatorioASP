@@ -73,7 +73,8 @@
             <tr>
                 <td class="style2">
                     <asp:Button ID="BtnCrear" runat="server" Text="Crear" />
-                    <asp:Button ID="BtnModificar" runat="server" Text="Modificar" Width="79px" />
+                    <asp:Button ID="BtnModificar" runat="server" Text="Modificar" Width="79px" 
+                        onclick="BtnModificar_Click" />
                 </td>
                 <td>
                     <asp:Button ID="BtnEliminar" runat="server" Text="Eliminar" />

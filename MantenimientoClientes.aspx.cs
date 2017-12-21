@@ -15,20 +15,31 @@ namespace ObligatorioASPNET
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+                this.LimpioFormulario();
         }
 
 
-        //FALTA ESTO!!!!!!!!!!!!!!!!!
-        private void DesactivoBotones()
+        private void LimpioFormulario()
         {
-            //.Enabled = false;
-            //BtnModificar.Enabled = false;
-            //btnBaja.Enabled = false;
+            //Bloqueo botones si no hay registro
+            BtnCrear.Enabled = false;
+            BtnModificar.Enabled = false;
+            BtnEliminar.Enabled = false;
+            BtnBuscar.Enabled = true;
 
-            //btnBuscar.Enabled = true;
+            TBInDocumento.Enabled = true;
         }
 
+        private void ActivoBotonesBM()
+        {
+            //Activo botones solo para Baja y Modificacion
+            BtnCrear.Enabled = false;
+            BtnModificar.Enabled = true;
+            BtnEliminar.Enabled = true;
+            BtnBuscar.Enabled = false;
+
+        }
 
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
@@ -56,6 +67,8 @@ namespace ObligatorioASPNET
                     TBTelefono.Text = Convert.ToString(Cli.Telefono);
                     TBDireccion.Text = Cli.Direccion;
                     TBFechaNac.Text = Convert.ToString(Cli.FechaNac);
+                    this.ActivoBotonesBM();
+
 
                 }
                 else
@@ -68,6 +81,31 @@ namespace ObligatorioASPNET
                 LblError.Text = ex.Message;
             }
         }
+
+
+        protected void BtnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cliente cli_m = (Cliente)Session["ClienteModificado"];
+
+                //modifico el objeto
+                cli_m.Nombre=TBNombre.Text;
+                cli_m.Cedula=Convert.ToInt32(TBInDocumento.Text);
+                cli_m.Tarjeta = Convert.ToInt64(TBTarjeta.Text);
+                cli_m.Direccion = TBDireccion.Text;
+                cli_m.FechaNac = Convert.ToDateTime(TBFechaNac.Text);
+                this.ActivoBotonesBM();
+                Cliente.Modificar(cli_m);
+                lblError.Text = "Modificacion con éxito";
+                this.LimpioFormulario();
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
+        }
+
 
     }
 }
