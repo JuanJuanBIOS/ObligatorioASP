@@ -143,68 +143,79 @@ else
 	select * from Clientes where documento=@documento
 	end
 End
-
+go
 
 
 --Se crea procedimiento para Modificacion de Clientes
-create procedure Modificar_Cliente
--- Se definen la variables de entrada al proceso, la cual va a ser la matrícula del vehículo
 
-@Ci int ,@Tarjeta bigint, @Nombre varchar(30), @Direccion varchar(50), @Telefono varchar(30), @Fechanac date AS
-BEGIN 
-	if Not(EXISTS (SELECT * FROM Viviendas WHERE PadronViv=@Padron))
-		RETURN -1
-
-	if Not(EXISTS(Select * From Duenios Where CiD = @duenio))
-		return -2
-		
-	--si llego aca puedo modificar
-	DECLARE @Error int
-	BEGIN TRAN
-
-	UPDATE Apartamentos 
-	SET PorteroApto = @Portero, PisoApto = @Piso, GCApto = @Gastos
-	WHERE PadronViv = @Padron
+create procedure Modificar_Cliente	@documento int ,@tarjeta bigint, @nombre varchar(30), @direccion varchar(50), @telefono varchar(30),
+                                     @fechanac datetime AS
+begin 
+	if Not(EXISTS (SELECT * FROM Clientes WHERE documento=@documento))
+	begin
+		return -1
+		print 'El cliente no existe'
+	end
+	--Si se encontró cliente:
+	UPDATE Clientes 
+	SET tarjeta = @tarjeta, nombre = @nombre, direccion = @direccion, telefono = @telefono, fechanac=@fechanac
+	WHERE documento = @documento
 	
-	SET @Error=@@ERROR;
-
-	UPDATE Viviendas 
-	SET DirViv = @Dir, FConsViv = @Fecha, PreAlqViv = @Precio, CiD = @duenio
-	WHERE PadronViv = @Padron
-	
-	SET @Error=@@ERROR+@Error;
-
-	IF(@Error=0)
-	BEGIN
-		COMMIT TRAN
+	IF(@@Error=0)
+	begin
+		print 'Se realizo correctamente la modificacion'
 		RETURN 1
-	END
+	end
 	ELSE
-	BEGIN
-		ROLLBACK TRAN
+	begin
+		print 'No se realizo la modificacion'
+		RETURN 0
+	end
+
+End
+go
+
+--Prueba de procedimiento
+ --Modificar_Cliente 4167344, 4967296361175688, 'Juan Manuel Perez','Avenida Italia 1548','45863458','2/1/1988'
+
+
+ --Creo procedimiento para eliminación de Cliente
+ CREATE PROCEDURE Eliminar_Cliente @documento int ,@tarjeta bigint, @nombre varchar(30), @direccion varchar(50), @telefono varchar(30),
+                                     @fechanac datetime AS
+Begin
+	if (EXISTS(Select * From Clientes Where documento = @documento))
+	begin
+		return -1
+		print 'El cliente ya existe'
+	end
+		
+INSERT INTO Clientes VALUES (@documento, @tarjeta, @nombre, @direccion, @telefono, @fechanac)
+	
+	IF(@@Error=0)
+		RETURN 1
+	ELSE
 		RETURN -3
-	END	
-END
+End
 
+--Prueba de procedimiento
+ --Eliminar_Cliente 4167344
 
---Se define la variable de entrada para la consulta
-@documento varchar(15)
-as
---Se verifica que existe cliente
-if not exists(select * from Clientes where documento=@documento)
-	begin
-	return -1
-	end
-else
-	begin
-	select * from Clientes where documento=@documento
-	end
+ --Creo procedimiento para crear cliente
 
-
-
-
-
-
+CREATE PROCEDURE Crear_Cliente @documento int, @Nombre varchar(25) AS
+Begin
+	if (EXISTS(Select * From Duenios Where CiD = @Ci))
+		return -1
+		
+	--si llego aca puedo agregar
+	INSERT Duenios(CiD, NomD) VALUES(@Ci, @Nombre) 
+	
+	IF(@@Error=0)
+		RETURN 1
+	else
+		RETURN -2
+End
+go
 
 -- Se crea procedimiento para eliminar Auto
 create procedure Eliminar_Auto
