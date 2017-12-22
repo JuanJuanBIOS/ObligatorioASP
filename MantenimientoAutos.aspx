@@ -100,6 +100,8 @@
                 </td>
                 <td>
                     <asp:Button ID="BtnEliminarAutos" runat="server" Text="Eliminar" />
+                    <asp:Button ID="BtnVolverAuto" runat="server" onclick="BtnVolverAuto_Click" 
+                        Text="Volver al Menú Principal" />
                 </td>
             </tr>
         </table>

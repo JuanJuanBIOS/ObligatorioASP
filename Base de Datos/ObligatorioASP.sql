@@ -247,10 +247,6 @@ where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Autos.matricula)
 end
 
 
-
-
-
-
 -- Se crea procedimiento para eliminar Auto
 create procedure Eliminar_Auto
 -- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
@@ -302,10 +298,6 @@ else
 	end;
 
 go 
-
-
-
-
 
 
 

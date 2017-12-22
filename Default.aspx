@@ -1,17 +1,33 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="ObligatorioASPNET._Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ObligatorioASPNET.Default" %>
 
-<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Welcome to ASP.NET!
-    </h2>
-    <p>
-        To learn more about ASP.NET visit <a href="http://www.asp.net" title="ASP.NET Website">www.asp.net</a>.
-    </p>
-    <p>
-        You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
-            title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.
-    </p>
-</asp:Content>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:HyperLink ID="HyperLinkClientes" runat="server" NavigateURL="~/MantenimientoClientes.aspx">Mantenimiento de Clientes</asp:HyperLink>
+        <br />
+        <br />
+        <asp:HyperLink ID="HyperLinkAutos" runat="server" NavigateUrl="~/MantenimientoAutos.aspx">Mantenimiento de Autos</asp:HyperLink>
+        <br />
+        <br />
+        <asp:HyperLink ID="HyperLinkUtilitarios" runat="server" NavigateUrl="~/MantenimientoUtilitarios.aspx">Mantenimiento de Utilitarios</asp:HyperLink>
+        <br />
+        <br />
+        <asp:HyperLink ID="HyperLinkAlquiler" runat="server">Realizar Alquiler</asp:HyperLink>
+        <br />
+        <br />
+        <asp:HyperLink ID="HyperLinkListado" runat="server">Listado de vehículos disponibles</asp:HyperLink>
+        <br />
+        <br />
+        <asp:HyperLink ID="HyperLinkTotal" runat="server">Total recaudado por vehículo</asp:HyperLink>
+    
+    </div>
+    </form>
+</body>
+</html>

@@ -9,9 +9,9 @@ namespace Logica
 {
     public class LogicaUtilitario
     {
-        /*public static Utilitario Buscar(string matricula)
+        public static Utilitario Buscar(string matricula)
         {
             return PersistenciaUtilitario.Buscar(matricula);
-        }*/
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace ObligatorioASPNET
             BtnEliminarAutos.Enabled = false;
 
             BtnCrearAutos.Enabled = true;
-            BtnBuscarAutos.Enabled = false;
+            BtnBuscarAutos.Enabled = true;
         }
 
         private void ActivoBotonesBM()
@@ -90,15 +90,21 @@ namespace ObligatorioASPNET
                     TBModeloAutos.Text = Veh.Modelo;
                     TBAnioAutos.Text = Convert.ToString(Veh.Año);
                     TBCantPuertasAutos.Text = Convert.ToString(Veh.CantPuertas);
-                    TBCostoDiarioAutos.Text = Convert.ToString(Veh.CostoAlquiler);
+                    TBCostoDiarioAutos.Text = "$ " +  Convert.ToString(Veh.CostoAlquiler);
                     TBCategoriaAutos.Text = Convert.ToString(Veh.Categoria);
                     TBTipoAutos.Text = ((Auto)Veh).TipoA;
+                    ActivoBotonesBM();
                 }
             }
             catch (Exception ex)
             {
                 LblErrorAutos.Text = ex.Message;
             }
+        }
+
+        protected void BtnVolverAuto_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }

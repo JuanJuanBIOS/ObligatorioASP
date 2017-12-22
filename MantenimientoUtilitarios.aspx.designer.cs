@@ -10,7 +10,7 @@
 namespace ObligatorioASPNET {
     
     
-    public partial class MantenimientoAutos {
+    public partial class MantenimientoUtilitarios {
         
         /// <summary>
         /// form1 control.
@@ -22,138 +22,147 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LblInMatriculaAuto control.
+        /// LblInMatriculaUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInMatriculaAuto;
+        protected global::System.Web.UI.WebControls.Label LblInMatriculaUtilitario;
         
         /// <summary>
-        /// TBInMatriculaAutos control.
+        /// TBInMatriculaUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBInMatriculaAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBInMatriculaUtilitario;
         
         /// <summary>
-        /// BtnBuscarAutos control.
+        /// BtnBuscarUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscarAutos;
+        protected global::System.Web.UI.WebControls.Button BtnBuscarUtilitario;
         
         /// <summary>
-        /// LblErrorAutos control.
+        /// LblErrorUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblErrorAutos;
+        protected global::System.Web.UI.WebControls.Label LblErrorUtilitario;
         
         /// <summary>
-        /// TBMarcaAutos control.
+        /// TBMarcaUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBMarcaAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBMarcaUtilitario;
         
         /// <summary>
-        /// TBModeloAutos control.
+        /// TBModeloUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBModeloAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBModeloUtilitario;
         
         /// <summary>
-        /// TBAnioAutos control.
+        /// TBAnioUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBAnioAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBAnioUtilitario;
         
         /// <summary>
-        /// TBCantPuertasAutos control.
+        /// TBCantPuertasUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCantPuertasAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBCantPuertasUtilitario;
         
         /// <summary>
-        /// TBCostoDiarioAutos control.
+        /// TBCostoDiarioUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCostoDiarioAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBCostoDiarioUtilitario;
         
         /// <summary>
-        /// TBCategoriaAutos control.
+        /// TBCategoriaUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBCategoriaAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBCategoriaUtilitario;
         
         /// <summary>
-        /// TBTipoAutos control.
+        /// TBCapacidadUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTipoAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBCapacidadUtilitario;
         
         /// <summary>
-        /// BtnCrearAutos control.
+        /// TBTipoUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCrearAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBTipoUtilitario;
         
         /// <summary>
-        /// BtnModificarAutos control.
+        /// BtnCrearUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnModificarAutos;
+        protected global::System.Web.UI.WebControls.Button BtnCrearUtilitario;
         
         /// <summary>
-        /// BtnEliminarAutos control.
+        /// BtnModificarUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEliminarAutos;
+        protected global::System.Web.UI.WebControls.Button BtnModificarUtilitario;
         
         /// <summary>
-        /// BtnVolverAuto control.
+        /// BtnEliminarUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnVolverAuto;
+        protected global::System.Web.UI.WebControls.Button BtnEliminarUtilitario;
+        
+        /// <summary>
+        /// BtnVolverUtilitario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnVolverUtilitario;
     }
 }

@@ -56,10 +56,11 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="MantenimientoAutos.aspx" />
     <Content Include="MantenimientoClientes.aspx" />
+    <Content Include="MantenimientoUtilitarios.aspx" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -131,6 +132,13 @@
     </Compile>
     <Compile Include="MantenimientoClientes.aspx.designer.cs">
       <DependentUpon>MantenimientoClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoUtilitarios.aspx.cs">
+      <DependentUpon>MantenimientoUtilitarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MantenimientoUtilitarios.aspx.designer.cs">
+      <DependentUpon>MantenimientoUtilitarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
