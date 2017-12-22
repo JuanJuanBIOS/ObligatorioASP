@@ -127,8 +127,11 @@ go
 -- CREACIÓN DE STORED PROCEDURES
 -- -----------------------------------------------------------------------------------------------
 
---Se crea procedimiento para búsuqueda de Clientes
-create procedure Buscar_Cliente
+-- ***********************************************************************************************
+-- CLIENTES
+-- ***********************************************************************************************
+
+CREATE PROCEDURE Buscar_Cliente
 --Se define la variable de entrada para la consulta
 @documento varchar(15)
 as
@@ -143,44 +146,27 @@ else
 	select * from Clientes where documento=@documento
 	end
 End
-<<<<<<< HEAD
 go
-=======
 
---Se cea procedimiento para búsqueda de Auto
-create procedure Buscar_Auto
-@matricula varchar(7)
-as
-begin
-if not exists(select * from Vehiculos where matricula=@matricula)
-	begin
-	return -1
-	end
-else
-	begin
-	select Vehiculos.*, Autos.anclaje from Vehiculos, Autos
-where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Autos.matricula)
-	end
-end
->>>>>>> c5d272b350a26ac67c5c4f4b361083cc847458b5
+ --Creo procedimiento para crear cliente
+CREATE PROCEDURE Crear_Cliente @documento int ,@tarjeta bigint, @nombre varchar(30), @direccion varchar(50), @telefono varchar(30),
+                                     @fechanac datetime AS
+Begin
+	if (EXISTS(Select * From Clientes Where documento = @documento))
+		return -1
+		
+	--si llego aca puedo crear
+	INSERT Clientes (documento, tarjeta, nombre, direccion, telefono, fechanac) VALUES(@documento, @tarjeta, @nombre, @direccion, @telefono, @fechanac) 
+	IF(@@Error=0)
+		RETURN 1
+	else
+		RETURN -2
+End
+go
 
---Se crea procedimiento para búsqueda de Utilitario
-create procedure Buscar_Utilitario
-@matricula varchar(7)
-as
-begin
-if not exists(select * from Vehiculos where matricula=@matricula)
-	begin
-	return -1
-	end
-else
-	begin
-	select Vehiculos.*, Utilitarios.capacidad, Utilitarios.tipo from Vehiculos, Utilitarios
-where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Utilitarios.matricula)
-	end
-end
-
---Se crea procedimiento para Modificacion de Clientes
+--Prueba de procedimiento
+ Crear_Cliente 4167345, 4967296361175688, 'Juan Manuel Perez','Avenida Italia 1548','45863458','2/1/1988'
+ go
 
 create procedure Modificar_Cliente	@documento int ,@tarjeta bigint, @nombre varchar(30), @direccion varchar(50), @telefono varchar(30),
                                      @fechanac datetime AS
@@ -208,9 +194,10 @@ begin
 
 End
 go
-
 --Prueba de procedimiento
  --Modificar_Cliente 4167344, 4967296361175688, 'Juan Manuel Perez','Avenida Italia 1548','45863458','2/1/1988'
+
+
 
 
  --Creo procedimiento para eliminación de Cliente
@@ -234,22 +221,35 @@ End
 --Prueba de procedimiento
  --Eliminar_Cliente 4167344
 
- --Creo procedimiento para crear cliente
 
-CREATE PROCEDURE Crear_Cliente @documento int, @Nombre varchar(25) AS
-Begin
-	if (EXISTS(Select * From Duenios Where CiD = @Ci))
-		return -1
-		
-	--si llego aca puedo agregar
-	INSERT Duenios(CiD, NomD) VALUES(@Ci, @Nombre) 
-	
-	IF(@@Error=0)
-		RETURN 1
-	else
-		RETURN -2
-End
-go
+
+
+
+-- ***********************************************************************************************
+-- AUTOS
+-- ***********************************************************************************************
+
+
+--Se cea procedimiento para búsqueda de Auto
+create procedure Buscar_Auto
+@matricula varchar(7)
+as
+begin
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+	return -1
+	end
+else
+	begin
+	select Vehiculos.*, Autos.anclaje from Vehiculos, Autos
+where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Autos.matricula)
+	end
+end
+
+
+
+
+
 
 -- Se crea procedimiento para eliminar Auto
 create procedure Eliminar_Auto
@@ -302,6 +302,35 @@ else
 	end;
 
 go 
+
+
+
+
+
+
+
+-- ***********************************************************************************************
+-- UTILITARIOS
+-- ***********************************************************************************************
+
+
+--Se crea procedimiento para búsqueda de Utilitario
+create procedure Buscar_Utilitario
+@matricula varchar(7)
+as
+begin
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+	return -1
+	end
+else
+	begin
+	select Vehiculos.*, Utilitarios.capacidad, Utilitarios.tipo from Vehiculos, Utilitarios
+where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Utilitarios.matricula)
+	end
+end
+
+
 
 -- Se crea procedimiento para eliminar Utilitario
 create procedure Eliminar_Utilitario
@@ -357,6 +386,9 @@ go
 
 
 
+-- ***********************************************************************************************
+-- ALQUILERES
+-- ***********************************************************************************************
 
 
 -- Se crea procedimiento para realizar un alquiler
