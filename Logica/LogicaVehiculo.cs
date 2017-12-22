@@ -11,7 +11,16 @@ namespace Logica
     {
         public static Vehiculo Buscar(string matricula)
         {
-            return PersistenciaVehiculo.Buscar(matricula);
+            Vehiculo V = null;
+
+            V = PersistenciaAuto.Buscar(matricula);
+
+            if (V==null)
+            {
+                V = PersistenciaUtilitario.Buscar(matricula);
+            }
+
+            return V;
         }
     }
 }

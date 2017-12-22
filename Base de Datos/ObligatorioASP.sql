@@ -144,7 +144,37 @@ else
 	end
 End
 
+--Se cea procedimiento para búsqueda de Auto
+create procedure Buscar_Auto
+@matricula varchar(7)
+as
+begin
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+	return -1
+	end
+else
+	begin
+	select Vehiculos.*, Autos.anclaje from Vehiculos, Autos
+where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Autos.matricula)
+	end
+end
 
+--Se crea procedimiento para búsqueda de Utilitario
+create procedure Buscar_Utilitario
+@matricula varchar(7)
+as
+begin
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+	return -1
+	end
+else
+	begin
+	select Vehiculos.*, Utilitarios.capacidad, Utilitarios.tipo from Vehiculos, Utilitarios
+where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Utilitarios.matricula)
+	end
+end
 
 --Se crea procedimiento para Modificacion de Clientes
 create procedure Modificar_Cliente

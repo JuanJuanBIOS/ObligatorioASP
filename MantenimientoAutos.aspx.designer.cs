@@ -40,6 +40,15 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.TextBox TBInMatriculaAutos;
         
         /// <summary>
+        /// BtnBuscarAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnBuscarAutos;
+        
+        /// <summary>
         /// LblErrorAutos control.
         /// </summary>
         /// <remarks>
@@ -49,12 +58,93 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.Label LblErrorAutos;
         
         /// <summary>
-        /// BtnBuscarAutos control.
+        /// TBMarcaAutos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnBuscarAutos;
+        protected global::System.Web.UI.WebControls.TextBox TBMarcaAutos;
+        
+        /// <summary>
+        /// TBModeloAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBModeloAutos;
+        
+        /// <summary>
+        /// TBAnioAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBAnioAutos;
+        
+        /// <summary>
+        /// TBCantPuertasAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBCantPuertasAutos;
+        
+        /// <summary>
+        /// TBCostoDiarioAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBCostoDiarioAutos;
+        
+        /// <summary>
+        /// TBCategoriaAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBCategoriaAutos;
+        
+        /// <summary>
+        /// TBTipoAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBTipoAutos;
+        
+        /// <summary>
+        /// BtnCrearAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCrearAutos;
+        
+        /// <summary>
+        /// BtnModificarAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnModificarAutos;
+        
+        /// <summary>
+        /// BtnEliminarAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEliminarAutos;
     }
 }
