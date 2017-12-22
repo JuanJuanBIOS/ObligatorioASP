@@ -143,8 +143,42 @@ else
 	select * from Clientes where documento=@documento
 	end
 End
+<<<<<<< HEAD
 go
+=======
 
+--Se cea procedimiento para búsqueda de Auto
+create procedure Buscar_Auto
+@matricula varchar(7)
+as
+begin
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+	return -1
+	end
+else
+	begin
+	select Vehiculos.*, Autos.anclaje from Vehiculos, Autos
+where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Autos.matricula)
+	end
+end
+>>>>>>> c5d272b350a26ac67c5c4f4b361083cc847458b5
+
+--Se crea procedimiento para búsqueda de Utilitario
+create procedure Buscar_Utilitario
+@matricula varchar(7)
+as
+begin
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+	return -1
+	end
+else
+	begin
+	select Vehiculos.*, Utilitarios.capacidad, Utilitarios.tipo from Vehiculos, Utilitarios
+where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Utilitarios.matricula)
+	end
+end
 
 --Se crea procedimiento para Modificacion de Clientes
 
