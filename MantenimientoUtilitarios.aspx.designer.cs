@@ -121,13 +121,13 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.TextBox TBCapacidadUtilitarios;
         
         /// <summary>
-        /// TBTipoUtilitarios control.
+        /// DDLTipoUtilitario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TBTipoUtilitarios;
+        protected global::System.Web.UI.WebControls.DropDownList DDLTipoUtilitario;
         
         /// <summary>
         /// BtnCrearUtilitarios control.

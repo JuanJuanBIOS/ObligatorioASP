@@ -45,7 +45,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("ERROR: El tipo de utilitario debe ser 'furgoneta' o 'pickup'");
+                    throw new Exception("ERROR: El tipo de utilitario debe ser 'Furgoneta' o 'Pickup'");
                 }
                 
             }

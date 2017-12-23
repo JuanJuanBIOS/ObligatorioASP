@@ -14,6 +14,15 @@
         {
             width: 189px;
         }
+        .style3
+        {
+            width: 189px;
+            height: 26px;
+        }
+        .style4
+        {
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -78,10 +87,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="style3">
                     Capacidad:
                 </td>
-                <td>
+                <td class="style4">
                     <asp:TextBox ID="TBCapacidadUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -90,7 +99,12 @@
                     Tipo:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBTipoUtilitarios" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="DDLTipoUtilitario" runat="server" Height="23px" 
+                        Width="147px">
+                        <asp:ListItem></asp:ListItem>
+                        <asp:ListItem>Furgoneta</asp:ListItem>
+                        <asp:ListItem>Pickup</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>

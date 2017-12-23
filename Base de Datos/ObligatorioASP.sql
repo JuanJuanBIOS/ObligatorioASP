@@ -230,7 +230,7 @@ End
 -- ***********************************************************************************************
 
 
---Se cea procedimiento para búsqueda de Auto
+--Se crea procedimiento para búsqueda de Auto
 create procedure Buscar_Auto
 @matricula varchar(7)
 as
@@ -273,13 +273,6 @@ else
 	end
 end
 go
-
-
-
-
-
-
-
 
 
 
@@ -358,6 +351,8 @@ else
 where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Utilitarios.matricula)
 	end
 end
+go
+
 
 -- Se crea procedimiento para crear utilitario
 create procedure Crear_Utilitario
@@ -385,6 +380,14 @@ else
 	end
 end
 go
+
+
+
+
+
+
+
+
 
 
 -- Se crea procedimiento para eliminar Utilitario

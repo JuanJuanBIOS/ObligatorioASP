@@ -19,13 +19,13 @@ namespace EntidadesCompartidas
             }
             set 
             {
-                if (value.ToLower() == "latch" || value.ToLower() == "isofix" || value.ToLower() == "cinturon")
+                if (value.ToLower() == "latch" || value.ToLower() == "isofix" || value.ToLower() == "cinturón")
                 {
                     _TipoA = value;
                 }
                 else 
                 {
-                    throw new Exception("ERROR: El tipo de anclaje debe ser 'latch', 'isofix' o 'cinturon'");
+                    throw new Exception("ERROR: El tipo de anclaje debe ser 'Cinturón', 'ISOFIX' o 'Latch'");
                 }
                 
             }

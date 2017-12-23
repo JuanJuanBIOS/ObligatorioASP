@@ -33,7 +33,7 @@ namespace ObligatorioASPNET
             TBCostoDiarioUtilitarios.Text = "";
             TBCategoriaUtilitarios.Text = "";
             TBCapacidadUtilitarios.Text = "";
-            TBTipoUtilitarios.Text = "";
+            DDLTipoUtilitario.ClearSelection();
 
             BloqueoCampos();
         }
@@ -47,7 +47,7 @@ namespace ObligatorioASPNET
             TBCostoDiarioUtilitarios.Enabled = false;
             TBCategoriaUtilitarios.Enabled = false;
             TBCapacidadUtilitarios.Enabled = false;
-            TBTipoUtilitarios.Enabled = false;
+            DDLTipoUtilitario.Enabled = false;
         }
 
         private void HabilitoCampos()
@@ -57,9 +57,8 @@ namespace ObligatorioASPNET
             TBAnioUtilitarios.Enabled = true;
             TBCantPuertasUtilitarios.Enabled = true;
             TBCostoDiarioUtilitarios.Enabled = true;
-            TBCategoriaUtilitarios.Enabled = true;
             TBCapacidadUtilitarios.Enabled = true;
-            TBTipoUtilitarios.Enabled = true;
+            DDLTipoUtilitario.Enabled = true;
         }
 
         private void ActivoBotonesA()
@@ -68,6 +67,8 @@ namespace ObligatorioASPNET
             BtnModificarUtilitarios.Enabled = false;
             BtnConfirmarUtilitarios.Enabled = false;
             BtnEliminarUtilitarios.Enabled = false;
+
+            TBCategoriaUtilitarios.Text = "Utilitario";
 
             HabilitoCampos();
         }
@@ -136,7 +137,7 @@ namespace ObligatorioASPNET
                     TBCostoDiarioUtilitarios.Text = "$ " + Convert.ToString(Veh.CostoAlquiler);
                     TBCategoriaUtilitarios.Text = Convert.ToString(Veh.Categoria);
                     TBCapacidadUtilitarios.Text = Convert.ToString(((Utilitario)Veh).CapCarga) + " kg";
-                    TBTipoUtilitarios.Text = ((Utilitario)Veh).Tipo;
+                    DDLTipoUtilitario.SelectedValue = ((Utilitario)Veh).Tipo;
                     ActivoBotonesBM();
                 }
             }
@@ -158,7 +159,7 @@ namespace ObligatorioASPNET
                 int oCostoDiario = Convert.ToInt32(TBCostoDiarioUtilitarios.Text);
                 string oCateogria = Convert.ToString(TBCategoriaUtilitarios.Text);
                 int oCapacidad = Convert.ToInt32(TBCapacidadUtilitarios.Text);
-                string oTipo = Convert.ToString(TBTipoUtilitarios.Text);
+                string oTipo = Convert.ToString(DDLTipoUtilitario.SelectedValue);
 
                 Utilitario unUtilitario = new Utilitario(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oCapacidad, oTipo);
 

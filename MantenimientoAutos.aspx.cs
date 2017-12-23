@@ -32,7 +32,7 @@ namespace ObligatorioASPNET
             TBCantPuertasAutos.Text = "";
             TBCostoDiarioAutos.Text = "";
             TBCategoriaAutos.Text = "";
-            TBTipoAutos.Text = "";
+            DDLTipoAutos.ClearSelection();
 
             BloqueoCampos();
         }
@@ -45,7 +45,7 @@ namespace ObligatorioASPNET
             TBCantPuertasAutos.Enabled = false;
             TBCostoDiarioAutos.Enabled = false;
             TBCategoriaAutos.Enabled = false;
-            TBTipoAutos.Enabled = false;
+            DDLTipoAutos.Enabled = false;
         }
 
         private void HabilitoCampos()
@@ -55,8 +55,7 @@ namespace ObligatorioASPNET
             TBAnioAutos.Enabled = true;
             TBCantPuertasAutos.Enabled = true;
             TBCostoDiarioAutos.Enabled = true;
-            TBCategoriaAutos.Enabled = true;
-            TBTipoAutos.Enabled = true;
+            DDLTipoAutos.Enabled = true;
         }
 
         private void ActivoBotonesA()
@@ -65,6 +64,8 @@ namespace ObligatorioASPNET
             BtnModificarAutos.Enabled = false;
             BtnConfirmarAutos.Enabled = false;
             BtnEliminarAutos.Enabled = false;
+
+            TBCategoriaAutos.Text = "Auto";
 
             HabilitoCampos();
         }
@@ -130,8 +131,8 @@ namespace ObligatorioASPNET
                     TBAnioAutos.Text = Convert.ToString(Veh.Año);
                     TBCantPuertasAutos.Text = Convert.ToString(Veh.CantPuertas);
                     TBCostoDiarioAutos.Text = "$ " +  Convert.ToString(Veh.CostoAlquiler);
-                    TBCategoriaAutos.Text = Convert.ToString(Veh.Categoria);
-                    TBTipoAutos.Text = ((Auto)Veh).TipoA;
+                    TBCategoriaAutos.Text = Veh.Categoria;
+                    DDLTipoAutos.SelectedValue = ((Auto)Veh).TipoA;
                     ActivoBotonesBM();
                 }
             }
@@ -152,7 +153,7 @@ namespace ObligatorioASPNET
                 int oCantPuertas = Convert.ToInt32(TBCantPuertasAutos.Text);
                 int oCostoDiario = Convert.ToInt32(TBCostoDiarioAutos.Text);
                 string oCateogria = Convert.ToString(TBCategoriaAutos.Text);
-                string oTipo = Convert.ToString(TBTipoAutos.Text);
+                string oTipo = Convert.ToString(DDLTipoAutos.SelectedValue);
 
                 Auto unAuto = new Auto(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oTipo);
 

@@ -14,6 +14,15 @@
         {
             width: 176px;
         }
+        .style3
+        {
+            width: 176px;
+            height: 26px;
+        }
+        .style4
+        {
+            height: 26px;
+        }
     </style>
 </head>
 <body>
@@ -57,10 +66,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="style3">
                     Cantidad de puertas:
                 </td>
-                <td>
+                <td class="style4">
                     <asp:TextBox ID="TBCantPuertasAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
@@ -73,18 +82,23 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="style3">
                     Categoría:
                 </td>
-                <td>
-                    <asp:TextBox ID="TBCategoriaAutos" runat="server" Enabled="false"></asp:TextBox>
+                <td class="style4">
+                    <asp:TextBox ID="TBCategoriaAutos" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Tipo de Anclaje:</td>
                 <td>
-                    <asp:TextBox ID="TBTipoAutos" runat="server" Enabled="false"></asp:TextBox>
+                    <asp:DropDownList ID="DDLTipoAutos" runat="server" Height="23px" Width="147px">
+                        <asp:ListItem></asp:ListItem>
+                        <asp:ListItem>Cinturón</asp:ListItem>
+                        <asp:ListItem>ISOFIX</asp:ListItem>
+                        <asp:ListItem>Latch</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
