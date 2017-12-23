@@ -22,5 +22,21 @@ namespace Logica
 
             return V;
         }
+
+        public static void Crear(Vehiculo Veh)
+        {
+            if (Veh is Auto)
+            {
+                PersistenciaAuto.Crear((Auto)Veh);
+            }
+            else if (Veh is Utilitario)
+            {
+                PersistenciaUtilitario.Crear((Utilitario)Veh);
+            }
+            else
+            {
+                throw new Exception ("No se indicó un vehículo para dar de alta");
+            }
+        }
     }
 }

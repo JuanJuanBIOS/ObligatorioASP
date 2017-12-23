@@ -33,7 +33,7 @@ namespace EntidadesCompartidas
                             //Comprueba los tres primeros lugares, verifica que sean letras
                             if (!Char.IsLetter(Convert.ToChar(value.Substring(i, 1))))
                             {
-                                throw new Exception("Error en el formato de la matricula");
+                                throw new Exception("ERROR: La matrícula debe constar de 3 letras seguidas de 4 números");
                             }
                         }
                         else 
@@ -41,7 +41,7 @@ namespace EntidadesCompartidas
                             //Ultimos cuatro lugares, comprueba si son numeros
                             if (!Char.IsDigit(Convert.ToChar(value.Substring(i, 1)))) 
                             {
-                                throw new Exception("Error en el formato de la matricula");
+                                throw new Exception("ERROR: La matrícula debe constar de 3 letras seguidas de 4 números");
                             }
                         }
                     }
@@ -51,7 +51,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("Error: Matricula: Longitud incorrecta (Son 7 digitos ABC1234)");
+                    throw new Exception("ERROR: La matrícula debe constar de 3 letras seguidas de 4 números");
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("Error: Marca de vehiculo");
+                    throw new Exception("ERROR: El campo 'Marca' no puede estar vacío.");
                 }
                 
             }
@@ -90,7 +90,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error: Modelo de vehiculo");
+                    throw new Exception("ERROR: El campo 'Modelo' no puede estar vacío.");
                 }                
             }
 
@@ -104,13 +104,13 @@ namespace EntidadesCompartidas
             }
             set 
             {
-                if (value > 1980)
+                if (value > 1900)
                 {
                     _Año = value;
                 }
                 else
                 {
-                    throw new Exception("Error: Año del vehiculo");
+                    throw new Exception("ERROR: El año debe ser mayor a 1900");
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error: Cantidad de puertas");
+                    throw new Exception("ERROR: La cantidad de puertas debe estar entre 1 y 5");
                 }
             }
         }
@@ -148,7 +148,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error: Costo alquiler");
+                    throw new Exception("ERROR: El costo diario debe ser mayor a 0");
 
                 }
             }
@@ -168,7 +168,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error: la categoría debe ser 'Auto' o 'Utilitario'");
+                    throw new Exception("ERROR: la categoría debe ser 'Auto' o 'Utilitario'");
                 }
 
             }

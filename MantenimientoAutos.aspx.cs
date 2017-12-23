@@ -22,10 +22,9 @@ namespace ObligatorioASPNET
             //Bloqueo botones si no hay registro
             BtnCrearAutos.Enabled = false;
             BtnModificarAutos.Enabled = false;
+            BtnConfirmarAutos.Enabled = false;
             BtnEliminarAutos.Enabled = false;
-            BtnBuscarAutos.Enabled = true;
 
-            TBInMatriculaAutos.Enabled = true;
             LblErrorAutos.Text = "";
             TBMarcaAutos.Text = "";
             TBModeloAutos.Text = "";
@@ -34,15 +33,40 @@ namespace ObligatorioASPNET
             TBCostoDiarioAutos.Text = "";
             TBCategoriaAutos.Text = "";
             TBTipoAutos.Text = "";
+
+            BloqueoCampos();
+        }
+
+        private void BloqueoCampos()
+        {
+            TBMarcaAutos.Enabled = false;
+            TBModeloAutos.Enabled = false;
+            TBAnioAutos.Enabled = false;
+            TBCantPuertasAutos.Enabled = false;
+            TBCostoDiarioAutos.Enabled = false;
+            TBCategoriaAutos.Enabled = false;
+            TBTipoAutos.Enabled = false;
+        }
+
+        private void HabilitoCampos()
+        {
+            TBMarcaAutos.Enabled = true;
+            TBModeloAutos.Enabled = true;
+            TBAnioAutos.Enabled = true;
+            TBCantPuertasAutos.Enabled = true;
+            TBCostoDiarioAutos.Enabled = true;
+            TBCategoriaAutos.Enabled = true;
+            TBTipoAutos.Enabled = true;
         }
 
         private void ActivoBotonesA()
         {
+            BtnCrearAutos.Enabled = true;
             BtnModificarAutos.Enabled = false;
+            BtnConfirmarAutos.Enabled = false;
             BtnEliminarAutos.Enabled = false;
 
-            BtnCrearAutos.Enabled = true;
-            BtnBuscarAutos.Enabled = true;
+            HabilitoCampos();
         }
 
         private void ActivoBotonesBM()
@@ -50,9 +74,20 @@ namespace ObligatorioASPNET
             //Activo botones solo para Baja y Modificacion
             BtnCrearAutos.Enabled = false;
             BtnModificarAutos.Enabled = true;
+            BtnConfirmarAutos.Enabled = false;
             BtnEliminarAutos.Enabled = true;
-            BtnBuscarAutos.Enabled = false;
 
+            BloqueoCampos();
+        }
+
+        private void ActivoCamposM()
+        {
+            BtnCrearAutos.Enabled = false;
+            BtnModificarAutos.Enabled = false;
+            BtnConfirmarAutos.Enabled = true;
+            BtnEliminarAutos.Enabled = false;
+
+            HabilitoCampos();
         }
 
         protected void BtnBuscarAutos_Click(object sender, EventArgs e)
@@ -78,11 +113,15 @@ namespace ObligatorioASPNET
                 {
                     LblErrorAutos.Text = "La matrícula ingresada no existe en la base de datos. Ingrese los datos y presione 'Crear'";
                     this.ActivoBotonesA();
+                    TBAnioAutos.Text = "0";
+                    TBCantPuertasAutos.Text = "0";
+                    TBCostoDiarioAutos.Text = "0";
                 }
 
                 else if (Veh is Utilitario)
                 {
                     throw new Exception("La matrícula ingresada corresponde a un Utilitario");
+                    this.LimpioFormulario();
                 }
                 else if (Veh is Auto)
                 {
@@ -102,9 +141,41 @@ namespace ObligatorioASPNET
             }
         }
 
+        protected void BtnCrearAutos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string oMatricula = Convert.ToString(TBInMatriculaAutos.Text);
+                string oMarca = Convert.ToString(TBMarcaAutos.Text);
+                string oModelo = Convert.ToString(TBModeloAutos.Text);
+                int oAnio = Convert.ToInt32(TBAnioAutos.Text);
+                int oCantPuertas = Convert.ToInt32(TBCantPuertasAutos.Text);
+                int oCostoDiario = Convert.ToInt32(TBCostoDiarioAutos.Text);
+                string oCateogria = Convert.ToString(TBCategoriaAutos.Text);
+                string oTipo = Convert.ToString(TBTipoAutos.Text);
+
+                Auto unAuto = new Auto(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oTipo);
+
+                LogicaVehiculo.Crear(unAuto);
+                LblErrorAutos.Text = "El Auto ha sido ingresado a la base de datos correctamente.";
+                BloqueoCampos();
+            }
+
+            catch (Exception ex)
+            {
+                LblErrorAutos.Text = ex.Message;
+            }
+        }
+
         protected void BtnVolverAuto_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
         }
+
+        protected void BtnModificarAutos_Click(object sender, EventArgs e)
+        {
+            ActivoCamposM();
+        }
+
     }
 }

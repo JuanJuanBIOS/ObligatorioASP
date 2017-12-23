@@ -5,6 +5,7 @@ using System.Text;
 using EntidadesCompartidas;
 using System.Data.SqlClient;
 using System.Web;
+using System.Data;
 
 namespace Persistencia
 {

@@ -25,7 +25,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("Error: tipo de silla");
+                    throw new Exception("ERROR: El tipo de anclaje debe ser 'latch', 'isofix' o 'cinturon'");
                 }
                 
             }

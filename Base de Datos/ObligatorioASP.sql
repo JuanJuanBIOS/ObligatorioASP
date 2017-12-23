@@ -245,6 +245,43 @@ else
 where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Autos.matricula)
 	end
 end
+go
+
+-- Se crea procedimiento para crear auto
+create procedure Crear_Auto
+@matricula varchar(7), @marca varchar(30), @modelo varchar(30),@anio int, @cant_puertas int,
+@costodiario int,@categoria varchar(10),@anclaje varchar(8)
+as
+begin
+if exists (select * from Vehiculos where matricula = @matricula)
+	return -1
+
+begin tran
+insert Vehiculos values (@matricula, @marca, @modelo, @anio, @cant_puertas, @costodiario, @categoria)
+
+insert Autos values (@matricula, @anclaje)
+
+if @@ERROR<>0
+	begin
+		rollback transaction
+		return -2
+	end
+else
+	begin
+		commit transaction
+		return 1
+	end
+end
+go
+
+
+
+
+
+
+
+
+
 
 
 -- Se crea procedimiento para eliminar Auto
@@ -322,6 +359,32 @@ where (Vehiculos.matricula=@matricula and Vehiculos.matricula=Utilitarios.matric
 	end
 end
 
+-- Se crea procedimiento para crear utilitario
+create procedure Crear_Utilitario
+@matricula varchar(7), @marca varchar(30), @modelo varchar(30),@anio int, @cant_puertas int,
+@costodiario int,@categoria varchar(10),@capacidad int, @tipo varchar(9)
+as
+begin
+if exists (select * from Vehiculos where matricula = @matricula)
+	return -1
+
+begin tran
+insert Vehiculos values (@matricula, @marca, @modelo, @anio, @cant_puertas, @costodiario, @categoria)
+
+insert Utilitarios values (@matricula, @capacidad, @tipo)
+
+if @@ERROR<>0
+	begin
+		rollback transaction
+		return -2
+	end
+else
+	begin
+		commit transaction
+		return 1
+	end
+end
+go
 
 
 -- Se crea procedimiento para eliminar Utilitario

@@ -21,7 +21,7 @@
     <div dir="ltr">
     
     
-        <asp:Label ID="LblInMatriculaAuto" runat="server" 
+        <asp:Label ID="LblInMatriculaAutos" runat="server" 
             Text="Ingrese la matrícula: "></asp:Label>
         <asp:TextBox ID="TBInMatriculaAutos" runat="server"></asp:TextBox>
         <asp:Button ID="BtnBuscarAutos" runat="server" Text="Buscar" 
@@ -38,14 +38,14 @@
                             <td class="style2">
                                 Marca:</td>
                 <td>
-                    <asp:TextBox ID="TBMarcaAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBMarcaAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Modelo:</td>
                 <td>
-                    <asp:TextBox ID="TBModeloAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBModeloAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -53,7 +53,7 @@
                     Año:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBAnioAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBAnioAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -61,7 +61,7 @@
                     Cantidad de puertas:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCantPuertasAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCantPuertasAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -69,7 +69,7 @@
                     Costo diario:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCostoDiarioAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCostoDiarioAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -77,14 +77,14 @@
                     Categoría:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCategoriaAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCategoriaAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Tipo de Anclaje:</td>
                 <td>
-                    <asp:TextBox ID="TBTipoAutos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBTipoAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -95,12 +95,16 @@
             </tr>
             <tr>
                 <td class="style2">
-                    <asp:Button ID="BtnCrearAutos" runat="server" Text="Crear" />
-                    <asp:Button ID="BtnModificarAutos" runat="server" Text="Modificar" />
+                    <asp:Button ID="BtnCrearAutos" runat="server" Text="Crear" Enabled="false" 
+                        onclick="BtnCrearAutos_Click"/>
+                    <asp:Button ID="BtnModificarAutos" runat="server" Text="Modificar" Enabled="false"
+                        onclick="BtnModificarAutos_Click" />
+                    <asp:Button ID="BtnConfirmarAutos" runat="server" 
+                        Text="Confirmar modificación" Enabled="false"/>
                 </td>
                 <td>
-                    <asp:Button ID="BtnEliminarAutos" runat="server" Text="Eliminar" />
-                    <asp:Button ID="BtnVolverAuto" runat="server" onclick="BtnVolverAuto_Click" 
+                    <asp:Button ID="BtnEliminarAutos" runat="server" Text="Eliminar" Enabled="false" />
+                    <asp:Button ID="BtnVolverAutos" runat="server" onclick="BtnVolverAuto_Click" 
                         Text="Volver al Menú Principal" />
                 </td>
             </tr>

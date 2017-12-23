@@ -20,40 +20,77 @@ namespace ObligatorioASPNET
         private void LimpioFormulario()
         {
             //Bloqueo botones si no hay registro
-            BtnCrearUtilitario.Enabled = false;
-            BtnModificarUtilitario.Enabled = false;
-            BtnEliminarUtilitario.Enabled = false;
-            BtnBuscarUtilitario.Enabled = true;
+            BtnCrearUtilitarios.Enabled = false;
+            BtnModificarUtilitarios.Enabled = false;
+            BtnConfirmarUtilitarios.Enabled = false;
+            BtnEliminarUtilitarios.Enabled = false;
 
-            TBInMatriculaUtilitario.Enabled = true;
-            LblErrorUtilitario.Text = "";
-            TBMarcaUtilitario.Text = "";
-            TBModeloUtilitario.Text = "";
-            TBAnioUtilitario.Text = "";
-            TBCantPuertasUtilitario.Text = "";
-            TBCostoDiarioUtilitario.Text = "";
-            TBCategoriaUtilitario.Text = "";
-            TBCapacidadUtilitario.Text = "";
-            TBTipoUtilitario.Text = "";
+            LblErrorUtilitarios.Text = "";
+            TBMarcaUtilitarios.Text = "";
+            TBModeloUtilitarios.Text = "";
+            TBAnioUtilitarios.Text = "";
+            TBCantPuertasUtilitarios.Text = "";
+            TBCostoDiarioUtilitarios.Text = "";
+            TBCategoriaUtilitarios.Text = "";
+            TBCapacidadUtilitarios.Text = "";
+            TBTipoUtilitarios.Text = "";
+
+            BloqueoCampos();
+        }
+
+        private void BloqueoCampos()
+        {
+            TBMarcaUtilitarios.Enabled = false;
+            TBModeloUtilitarios.Enabled = false;
+            TBAnioUtilitarios.Enabled = false;
+            TBCantPuertasUtilitarios.Enabled = false;
+            TBCostoDiarioUtilitarios.Enabled = false;
+            TBCategoriaUtilitarios.Enabled = false;
+            TBCapacidadUtilitarios.Enabled = false;
+            TBTipoUtilitarios.Enabled = false;
+        }
+
+        private void HabilitoCampos()
+        {
+            TBMarcaUtilitarios.Enabled = true;
+            TBModeloUtilitarios.Enabled = true;
+            TBAnioUtilitarios.Enabled = true;
+            TBCantPuertasUtilitarios.Enabled = true;
+            TBCostoDiarioUtilitarios.Enabled = true;
+            TBCategoriaUtilitarios.Enabled = true;
+            TBCapacidadUtilitarios.Enabled = true;
+            TBTipoUtilitarios.Enabled = true;
         }
 
         private void ActivoBotonesA()
         {
-            BtnModificarUtilitario.Enabled = false;
-            BtnEliminarUtilitario.Enabled = false;
+            BtnCrearUtilitarios.Enabled = true;
+            BtnModificarUtilitarios.Enabled = false;
+            BtnConfirmarUtilitarios.Enabled = false;
+            BtnEliminarUtilitarios.Enabled = false;
 
-            BtnCrearUtilitario.Enabled = true;
-            BtnBuscarUtilitario.Enabled = true;
+            HabilitoCampos();
         }
 
         private void ActivoBotonesBM()
         {
             //Activo botones solo para Baja y Modificacion
-            BtnCrearUtilitario.Enabled = false;
-            BtnModificarUtilitario.Enabled = true;
-            BtnEliminarUtilitario.Enabled = true;
-            BtnBuscarUtilitario.Enabled = false;
+            BtnCrearUtilitarios.Enabled = false;
+            BtnModificarUtilitarios.Enabled = true;
+            BtnConfirmarUtilitarios.Enabled = false;
+            BtnEliminarUtilitarios.Enabled = true;
 
+            BloqueoCampos();
+        }
+
+        private void ActivoCamposM()
+        {
+            BtnCrearUtilitarios.Enabled = false;
+            BtnModificarUtilitarios.Enabled = false;
+            BtnConfirmarUtilitarios.Enabled = true;
+            BtnEliminarUtilitarios.Enabled = false;
+
+            HabilitoCampos();
         }
 
         protected void BtnBuscarUtilitario_Click1(object sender, EventArgs e)
@@ -63,11 +100,11 @@ namespace ObligatorioASPNET
 
             try
             {
-                matricula = Convert.ToString(TBInMatriculaUtilitario.Text);
+                matricula = Convert.ToString(TBInMatriculaUtilitarios.Text);
             }
             catch
             {
-                LblErrorUtilitario.Text = "Ingrese una matrícula válida";
+                LblErrorUtilitarios.Text = "Ingrese una matrícula válida";
                 return;
             }
 
@@ -77,36 +114,75 @@ namespace ObligatorioASPNET
 
                 if (Veh == null)
                 {
-                    LblErrorUtilitario.Text = "La matrícula ingresada no existe en la base de datos. Ingrese los datos y presione 'Crear'";
+                    LblErrorUtilitarios.Text = "La matrícula ingresada no existe en la base de datos. Ingrese los datos y presione 'Crear'";
                     this.ActivoBotonesA();
+                    TBAnioUtilitarios.Text = "0";
+                    TBCantPuertasUtilitarios.Text = "0";
+                    TBCostoDiarioUtilitarios.Text = "0";
+                    TBCapacidadUtilitarios.Text = "0";
                 }
 
                 else if (Veh is Auto)
                 {
                     throw new Exception("La matrícula ingresada corresponde a un Auto");
+                    this.LimpioFormulario();
                 }
                 else if (Veh is Utilitario)
                 {
-                    TBMarcaUtilitario.Text = Veh.Marca;
-                    TBModeloUtilitario.Text = Veh.Modelo;
-                    TBAnioUtilitario.Text = Convert.ToString(Veh.Año);
-                    TBCantPuertasUtilitario.Text = Convert.ToString(Veh.CantPuertas);
-                    TBCostoDiarioUtilitario.Text = "$ " + Convert.ToString(Veh.CostoAlquiler);
-                    TBCategoriaUtilitario.Text = Convert.ToString(Veh.Categoria);
-                    TBCapacidadUtilitario.Text = Convert.ToString(((Utilitario)Veh).CapCarga) + " kg";
-                    TBTipoUtilitario.Text = ((Utilitario)Veh).Tipo;
+                    TBMarcaUtilitarios.Text = Veh.Marca;
+                    TBModeloUtilitarios.Text = Veh.Modelo;
+                    TBAnioUtilitarios.Text = Convert.ToString(Veh.Año);
+                    TBCantPuertasUtilitarios.Text = Convert.ToString(Veh.CantPuertas);
+                    TBCostoDiarioUtilitarios.Text = "$ " + Convert.ToString(Veh.CostoAlquiler);
+                    TBCategoriaUtilitarios.Text = Convert.ToString(Veh.Categoria);
+                    TBCapacidadUtilitarios.Text = Convert.ToString(((Utilitario)Veh).CapCarga) + " kg";
+                    TBTipoUtilitarios.Text = ((Utilitario)Veh).Tipo;
                     ActivoBotonesBM();
                 }
             }
             catch (Exception ex)
             {
-                LblErrorUtilitario.Text = ex.Message;
+                LblErrorUtilitarios.Text = ex.Message;
             }
         }
-        
+
+        protected void BtnCrearUtilitarios_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                string oMatricula = Convert.ToString(TBInMatriculaUtilitarios.Text);
+                string oMarca = Convert.ToString(TBMarcaUtilitarios.Text);
+                string oModelo = Convert.ToString(TBModeloUtilitarios.Text);
+                int oAnio = Convert.ToInt32(TBAnioUtilitarios.Text);
+                int oCantPuertas = Convert.ToInt32(TBCantPuertasUtilitarios.Text);
+                int oCostoDiario = Convert.ToInt32(TBCostoDiarioUtilitarios.Text);
+                string oCateogria = Convert.ToString(TBCategoriaUtilitarios.Text);
+                int oCapacidad = Convert.ToInt32(TBCapacidadUtilitarios.Text);
+                string oTipo = Convert.ToString(TBTipoUtilitarios.Text);
+
+                Utilitario unUtilitario = new Utilitario(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oCapacidad, oTipo);
+
+                LogicaVehiculo.Crear(unUtilitario);
+                LblErrorUtilitarios.Text = "El Utilitario ha sido ingresado a la base de datos correctamente.";
+                BloqueoCampos();
+            }
+
+            catch (Exception ex)
+            {
+                LblErrorUtilitarios.Text = ex.Message;
+            }
+        }
+
+
         protected void BtnVolverUtilitario_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
         }
+
+        protected void BtnModificarUtilitarios_Click(object sender, EventArgs e)
+        {
+            ActivoCamposM();
+        }
+
     }
 }

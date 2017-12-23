@@ -22,13 +22,13 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LblInMatriculaAuto control.
+        /// LblInMatriculaAutos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInMatriculaAuto;
+        protected global::System.Web.UI.WebControls.Label LblInMatriculaAutos;
         
         /// <summary>
         /// TBInMatriculaAutos control.
@@ -139,6 +139,15 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.Button BtnModificarAutos;
         
         /// <summary>
+        /// BtnConfirmarAutos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnConfirmarAutos;
+        
+        /// <summary>
         /// BtnEliminarAutos control.
         /// </summary>
         /// <remarks>
@@ -148,12 +157,12 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.Button BtnEliminarAutos;
         
         /// <summary>
-        /// BtnVolverAuto control.
+        /// BtnVolverAutos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnVolverAuto;
+        protected global::System.Web.UI.WebControls.Button BtnVolverAutos;
     }
 }

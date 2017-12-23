@@ -26,7 +26,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error en Capacidad de carga");
+                    throw new Exception("ERROR: La capacidad de carga debe ser mayor a 0");
                 }
             }
         }
@@ -45,7 +45,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("Error: Tipo de utilitario");
+                    throw new Exception("ERROR: El tipo de utilitario debe ser 'furgoneta' o 'pickup'");
                 }
                 
             }

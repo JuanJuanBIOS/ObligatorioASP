@@ -20,14 +20,14 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Label ID="LblInMatriculaUtilitario" runat="server" 
+        <asp:Label ID="LblInMatriculaUtilitarios" runat="server" 
             Text="Ingrese la matrícula: "></asp:Label>
-        <asp:TextBox ID="TBInMatriculaUtilitario" runat="server"></asp:TextBox>
-        <asp:Button ID="BtnBuscarUtilitario" runat="server" Text="Buscar" 
+        <asp:TextBox ID="TBInMatriculaUtilitarios" runat="server"></asp:TextBox>
+        <asp:Button ID="BtnBuscarUtilitarios" runat="server" Text="Buscar" 
             onclick="BtnBuscarUtilitario_Click1" />
         <br />
         <br />
-        <asp:Label ID="LblErrorUtilitario" runat="server" ForeColor="Red"></asp:Label>
+        <asp:Label ID="LblErrorUtilitarios" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         <table class="style1">
@@ -35,14 +35,14 @@
                 <td class="style2">
                     Marca:</td>
                 <td>
-                    <asp:TextBox ID="TBMarcaUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBMarcaUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td class="style2">
                     Modelo:</td>
                 <td>
-                    <asp:TextBox ID="TBModeloUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBModeloUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -50,7 +50,7 @@
                     Año: 
                 </td>
                 <td>
-                    <asp:TextBox ID="TBAnioUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBAnioUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -58,7 +58,7 @@
                    Cantidad de puertas:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCantPuertasUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCantPuertasUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -66,7 +66,7 @@
                     Costo diario:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCostoDiarioUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCostoDiarioUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -74,7 +74,7 @@
                     Categoría:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCategoriaUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCategoriaUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@
                     Capacidad:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBCapacidadUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBCapacidadUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -90,7 +90,7 @@
                     Tipo:
                 </td>
                 <td>
-                    <asp:TextBox ID="TBTipoUtilitario" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBTipoUtilitarios" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -101,12 +101,17 @@
             </tr>
             <tr>
                 <td class="style2">
-                    <asp:Button ID="BtnCrearUtilitario" runat="server" Text="Crear" />
-                    <asp:Button ID="BtnModificarUtilitario" runat="server" Text="Modificar" />
+                    <asp:Button ID="BtnCrearUtilitarios" runat="server" Text="Crear" 
+                        Enabled="false" onclick="BtnCrearUtilitarios_Click1"/>
+                    <asp:Button ID="BtnModificarUtilitarios" runat="server" Text="Modificar" 
+                        Enabled="false" onclick="BtnModificarUtilitarios_Click"/>
+                    <asp:Button ID="BtnConfirmarUtilitarios" runat="server" 
+                        Text="Confirmar modificación" Enabled="false"/>
                 </td>
                 <td>
-                    <asp:Button ID="BtnEliminarUtilitario" runat="server" Text="Eliminar" />
-                    <asp:Button ID="BtnVolverUtilitario" runat="server" 
+                    <asp:Button ID="BtnEliminarUtilitarios" runat="server" Text="Eliminar" 
+                        Enabled="false"/>
+                    <asp:Button ID="BtnVolverUtilitarios" runat="server" 
                         onclick="BtnVolverUtilitario_Click" Text="Volver al Menú Principal" />
                 </td>
             </tr>
