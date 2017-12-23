@@ -28,6 +28,11 @@
 <body>
     <form id="form1" runat="server">
     <div dir="ltr">
+
+        <asp:Label ID="LblTituloUtilitarios" runat="server" 
+                Text="Mantenimiento de Autos" Font-Bold="true" Font-Size =Large ></asp:Label>
+            <br />
+            <br />
     
     
         <asp:Label ID="LblInMatriculaAutos" runat="server" 
@@ -58,10 +63,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="style2">
+                <td class="style3">
                     Año:
                 </td>
-                <td>
+                <td class="style4">
                     <asp:TextBox ID="TBAnioAutos" runat="server" Enabled="false"></asp:TextBox>
                 </td>
             </tr>
@@ -75,7 +80,8 @@
             </tr>
             <tr>
                 <td class="style2">
-                    Costo diario:
+                    Costo diario 
+                    (US$):
                 </td>
                 <td>
                     <asp:TextBox ID="TBCostoDiarioAutos" runat="server" Enabled="false"></asp:TextBox>
@@ -114,7 +120,8 @@
                     <asp:Button ID="BtnModificarAutos" runat="server" Text="Modificar" Enabled="false"
                         onclick="BtnModificarAutos_Click" />
                     <asp:Button ID="BtnConfirmarAutos" runat="server" 
-                        Text="Confirmar modificación" Enabled="false"/>
+                        Text="Confirmar modificación" Enabled="false" 
+                        onclick="BtnConfirmarAutos_Click"/>
                 </td>
                 <td>
                     <asp:Button ID="BtnEliminarAutos" runat="server" Text="Eliminar" Enabled="false" />

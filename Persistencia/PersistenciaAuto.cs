@@ -108,5 +108,54 @@ namespace Persistencia
                 oConexion.Close();
             }
         }
+
+        public static void Modificar(Auto unA)
+        {
+            SqlConnection oConexion = new SqlConnection(Conexion.STR);
+            SqlCommand oComando = new SqlCommand("Modificar_Auto ", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+
+            oComando.Parameters.AddWithValue("@matricula", unA.Matricula);
+            oComando.Parameters.AddWithValue("@marca", unA.Marca);
+            oComando.Parameters.AddWithValue("@modelo", unA.Modelo);
+            oComando.Parameters.AddWithValue("@anio", unA.Año);
+            oComando.Parameters.AddWithValue("@cant_puertas", unA.CantPuertas);
+            oComando.Parameters.AddWithValue("@costodiario", unA.CostoAlquiler);
+            oComando.Parameters.AddWithValue("@categoria", unA.Categoria);
+            oComando.Parameters.AddWithValue("@anclaje", unA.TipoA);
+
+            SqlParameter oRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+            oRetorno.Direction = ParameterDirection.ReturnValue;
+            oComando.Parameters.Add(oRetorno);
+
+            try
+            {
+                oConexion.Open();
+                oComando.ExecuteNonQuery();
+
+                int oAfectados = (int)oComando.Parameters["@Retorno"].Value;
+
+                if (oAfectados == -1)
+                {
+                    throw new Exception("El Auto no existe en la base de datos");
+                }
+                else if (oAfectados == -2)
+                {
+                    throw new Exception("El Auto no existe en la base de datos");
+                }
+                else if (oAfectados == -3)
+                {
+                    throw new Exception("Error en la base de datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+        }
     }
 }

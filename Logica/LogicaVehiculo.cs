@@ -38,5 +38,21 @@ namespace Logica
                 throw new Exception ("No se indicó un vehículo para dar de alta");
             }
         }
+
+        public static void Modificar(Vehiculo Veh)
+        {
+            if (Veh is Auto)
+            {
+                PersistenciaAuto.Modificar((Auto)Veh);
+            }
+            else if (Veh is Utilitario)
+            {
+                PersistenciaUtilitario.Modificar((Utilitario)Veh);
+            }
+            else
+            {
+                throw new Exception("No se indicó un vehículo para modificar");
+            }
+        }
     }
 }

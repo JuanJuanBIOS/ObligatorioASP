@@ -89,6 +89,7 @@ namespace ObligatorioASPNET
             BtnEliminarAutos.Enabled = false;
 
             HabilitoCampos();
+            TBInMatriculaAutos.Enabled = false;
         }
 
         protected void BtnBuscarAutos_Click(object sender, EventArgs e)
@@ -130,7 +131,7 @@ namespace ObligatorioASPNET
                     TBModeloAutos.Text = Veh.Modelo;
                     TBAnioAutos.Text = Convert.ToString(Veh.Año);
                     TBCantPuertasAutos.Text = Convert.ToString(Veh.CantPuertas);
-                    TBCostoDiarioAutos.Text = "$ " +  Convert.ToString(Veh.CostoAlquiler);
+                    TBCostoDiarioAutos.Text = Convert.ToString(Veh.CostoAlquiler);
                     TBCategoriaAutos.Text = Veh.Categoria;
                     DDLTipoAutos.SelectedValue = ((Auto)Veh).TipoA;
                     ActivoBotonesBM();
@@ -176,6 +177,33 @@ namespace ObligatorioASPNET
         protected void BtnModificarAutos_Click(object sender, EventArgs e)
         {
             ActivoCamposM();
+        }
+
+        protected void BtnConfirmarAutos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string oMatricula = Convert.ToString(TBInMatriculaAutos.Text);
+                string oMarca = Convert.ToString(TBMarcaAutos.Text);
+                string oModelo = Convert.ToString(TBModeloAutos.Text);
+                int oAnio = Convert.ToInt32(TBAnioAutos.Text);
+                int oCantPuertas = Convert.ToInt32(TBCantPuertasAutos.Text);
+                int oCostoDiario = Convert.ToInt32(TBCostoDiarioAutos.Text);
+                string oCateogria = Convert.ToString(TBCategoriaAutos.Text);
+                string oTipo = Convert.ToString(DDLTipoAutos.SelectedValue);
+
+                Auto unAuto = new Auto(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oTipo);
+
+                LogicaVehiculo.Modificar(unAuto);
+                LblErrorAutos.Text = "El Auto ha sido modificaro correctamente.";
+                BloqueoCampos();
+                TBInMatriculaAutos.Enabled = true;
+            }
+
+            catch (Exception ex)
+            {
+                LblErrorAutos.Text = ex.Message;
+            }
         }
 
     }

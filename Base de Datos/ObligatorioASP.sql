@@ -274,6 +274,41 @@ else
 end
 go
 
+-- Se crea procedimiento para modificar auto
+create procedure Modificar_Auto
+@matricula varchar(7), @marca varchar(30), @modelo varchar(30),@anio int, @cant_puertas int,
+@costodiario int,@categoria varchar(10),@anclaje varchar(8)
+as
+begin
+if not exists (select * from Vehiculos where matricula = @matricula)
+	return -1
+
+if not exists (select * from Autos where matricula = @matricula)
+	return -2
+	
+begin tran
+update Autos
+set anclaje = @anclaje
+where matricula = @matricula;
+
+update Vehiculos
+set marca = @marca, modelo = @modelo, anio = @anio, cant_puertas = @cant_puertas, 
+	costodiario = @costodiario
+where matricula = @matricula;
+
+if @@ERROR<>0
+	begin
+		rollback transaction
+		return -3
+	end
+else
+	begin
+		commit transaction
+		return 1
+	end
+end
+go
+
 
 
 
@@ -381,6 +416,40 @@ else
 end
 go
 
+-- Se crea procedimiento para modificar utilitario
+create procedure Modificar_Utilitario
+@matricula varchar(7), @marca varchar(30), @modelo varchar(30),@anio int, @cant_puertas int,
+@costodiario int,@categoria varchar(10),@capacidad int, @tipo varchar(9)
+as
+begin
+if not exists (select * from Vehiculos where matricula = @matricula)
+	return -1
+
+if not exists (select * from Utilitarios where matricula = @matricula)
+	return -2
+	
+begin tran
+update Utilitarios
+set capacidad = @capacidad, tipo = @tipo
+where matricula = @matricula;
+
+update Vehiculos
+set marca = @marca, modelo = @modelo, anio = @anio, cant_puertas = @cant_puertas, 
+	costodiario = @costodiario
+where matricula = @matricula;
+
+if @@ERROR<>0
+	begin
+		rollback transaction
+		return -3
+	end
+else
+	begin
+		commit transaction
+		return 1
+	end
+end
+go
 
 
 

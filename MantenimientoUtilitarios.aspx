@@ -29,6 +29,11 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:Label ID="LblTituloUtilitarios" runat="server" 
+            Text="Mantenimiento de Utilitarios" Font-Bold="true" Font-Size =Large ></asp:Label>
+        <br />
+        <br />
+    
         <asp:Label ID="LblInMatriculaUtilitarios" runat="server" 
             Text="Ingrese la matrícula: "></asp:Label>
         <asp:TextBox ID="TBInMatriculaUtilitarios" runat="server"></asp:TextBox>
@@ -72,7 +77,8 @@
             </tr>
             <tr>
                 <td class="style2">
-                    Costo diario:
+                    Costo diario 
+                    (US$):
                 </td>
                 <td>
                     <asp:TextBox ID="TBCostoDiarioUtilitarios" runat="server"></asp:TextBox>
@@ -88,7 +94,8 @@
             </tr>
             <tr>
                 <td class="style3">
-                    Capacidad:
+                    Capacidad 
+                    (kg):
                 </td>
                 <td class="style4">
                     <asp:TextBox ID="TBCapacidadUtilitarios" runat="server"></asp:TextBox>
@@ -120,7 +127,8 @@
                     <asp:Button ID="BtnModificarUtilitarios" runat="server" Text="Modificar" 
                         Enabled="false" onclick="BtnModificarUtilitarios_Click"/>
                     <asp:Button ID="BtnConfirmarUtilitarios" runat="server" 
-                        Text="Confirmar modificación" Enabled="false"/>
+                        Text="Confirmar modificación" Enabled="false" 
+                        onclick="BtnConfirmarUtilitarios_Click"/>
                 </td>
                 <td>
                     <asp:Button ID="BtnEliminarUtilitarios" runat="server" Text="Eliminar" 
