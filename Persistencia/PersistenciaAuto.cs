@@ -157,5 +157,48 @@ namespace Persistencia
                 oConexion.Close();
             }
         }
+
+
+        public static void Eliminar(Auto unA)
+        {
+            SqlConnection oConexion = new SqlConnection(Conexion.STR);
+            SqlCommand oComando = new SqlCommand("Eliminar_Auto ", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+
+            oComando.Parameters.AddWithValue("@matricula", unA.Matricula);
+
+            SqlParameter oRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+            oRetorno.Direction = ParameterDirection.ReturnValue;
+            oComando.Parameters.Add(oRetorno);
+
+            try
+            {
+                oConexion.Open();
+                oComando.ExecuteNonQuery();
+
+                int oAfectados = (int)oComando.Parameters["@Retorno"].Value;
+
+                if (oAfectados == -1)
+                {
+                    throw new Exception("El Auto no existe en la base de datos");
+                }
+                else if (oAfectados == -2)
+                {
+                    throw new Exception("El Auto no se puede eliminar porque posee alquileres asociados");
+                }
+                else if (oAfectados == -3)
+                {
+                    throw new Exception("Error en la base de datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+        }
     }
 }

@@ -206,5 +206,32 @@ namespace ObligatorioASPNET
             }
         }
 
+        protected void BtnEliminarAutos_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string oMatricula = Convert.ToString(TBInMatriculaAutos.Text);
+                string oMarca = Convert.ToString(TBMarcaAutos.Text);
+                string oModelo = Convert.ToString(TBModeloAutos.Text);
+                int oAnio = Convert.ToInt32(TBAnioAutos.Text);
+                int oCantPuertas = Convert.ToInt32(TBCantPuertasAutos.Text);
+                int oCostoDiario = Convert.ToInt32(TBCostoDiarioAutos.Text);
+                string oCateogria = Convert.ToString(TBCategoriaAutos.Text);
+                string oTipo = Convert.ToString(DDLTipoAutos.SelectedValue);
+
+                Auto unAuto = new Auto(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oTipo);
+
+                BtnBuscarAutos_Click(unAuto, e);
+                LogicaVehiculo.Eliminar(unAuto);
+                LimpioFormulario();
+                LblErrorAutos.Text = "El Auto ha sido eliminado correctamente.";
+            }
+
+            catch (Exception ex)
+            {
+                LblErrorAutos.Text = ex.Message;
+            }
+        }
     }
 }

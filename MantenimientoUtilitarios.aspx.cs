@@ -214,5 +214,31 @@ namespace ObligatorioASPNET
             }
         }
 
+        protected void BtnEliminarUtilitarios_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string oMatricula = Convert.ToString(TBInMatriculaUtilitarios.Text);
+                string oMarca = Convert.ToString(TBMarcaUtilitarios.Text);
+                string oModelo = Convert.ToString(TBModeloUtilitarios.Text);
+                int oAnio = Convert.ToInt32(TBAnioUtilitarios.Text);
+                int oCantPuertas = Convert.ToInt32(TBCantPuertasUtilitarios.Text);
+                int oCostoDiario = Convert.ToInt32(TBCostoDiarioUtilitarios.Text);
+                string oCateogria = Convert.ToString(TBCategoriaUtilitarios.Text);
+                int oCapacidad = Convert.ToInt32(TBCapacidadUtilitarios.Text);
+                string oTipo = Convert.ToString(DDLTipoUtilitario.SelectedValue);
+
+                Utilitario unUtilitario = new Utilitario(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oCapacidad, oTipo);
+
+                LogicaVehiculo.Eliminar(unUtilitario);
+                LimpioFormulario();
+                LblErrorUtilitarios.Text = "El Utilitario ha sido eliminado correctamente.";
+            }
+
+            catch (Exception ex)
+            {
+                LblErrorUtilitarios.Text = ex.Message;
+            }
+        }
     }
 }

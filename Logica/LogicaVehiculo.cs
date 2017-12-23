@@ -54,5 +54,21 @@ namespace Logica
                 throw new Exception("No se indicó un vehículo para modificar");
             }
         }
+
+        public static void Eliminar(Vehiculo Veh)
+        {
+            if (Veh is Auto)
+            {
+                PersistenciaAuto.Eliminar((Auto)Veh);
+            }
+            else if (Veh is Utilitario)
+            {
+                PersistenciaUtilitario.Eliminar((Utilitario)Veh);
+            }
+            else
+            {
+                throw new Exception("No se indicó un vehículo para eliminar");
+            }
+        }
     }
 }

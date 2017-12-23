@@ -61,10 +61,10 @@ tipo varchar(9),
 create table Alquileres(
 idAlquiler int identity(1,1) NOT NULL PRIMARY KEY,
 vehiculo varchar(7) not null foreign key references Vehiculos(matricula),
-cliente varchar(15) not null foreign key references Clientes(documento),
+cliente int not null foreign key references Clientes(documento),
 fechainicio datetime not null,
 fechafin datetime not null,
-costo float not null,
+costo int not null,
 )
 
 -- -----------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ INSERT INTO Vehiculos VALUES
 -- Se agregan datos a la tabla Autos
 INSERT INTO Autos VALUES
 ('AAA1111','ISOFIX'),
-('BBB2222','Cinturon'),
+('BBB2222','Cinturón'),
 ('CCC3333','ISOFIX'),
 ('DDD4444','Latch'),
 ('EEE5555','Latch'),
@@ -118,8 +118,8 @@ INSERT INTO Utilitarios VALUES
 
 -- Se agregan datos a la tabla Alquileres
 INSERT INTO Alquileres VALUES
-('CCC3333','3155160','12/01/2017','12/15/2017',380),
-('AAA1111','4598108','10/02/2017','10/08/2017',150)
+('CCC3333',3155160,'12/01/2017','12/15/2017',380),
+('AAA1111',4598108,'10/02/2017','10/08/2017',150)
 
 go
 
@@ -310,59 +310,35 @@ end
 go
 
 
-
-
 -- Se crea procedimiento para eliminar Auto
 create procedure Eliminar_Auto
 -- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
-@vehiculo varchar(7)
+@matricula varchar(7)
 as
 -- Se chequea que exista la matrícula en la base de datos, y si no existe se muestra el error
-if not exists(select * from Vehiculos where matricula=@vehiculo)
-	begin
-	print 'El vehículo no existe en la base de datos'
+if not exists(select * from Vehiculos where matricula=@matricula)
 	return -1
-	end
 -- Se chequea qeu el vehículo que se desea almacenar no posea ningún alquiler asociado, si lo posee se muestra el error
-else if exists(select * from Alquileres where vehiculo=@vehiculo)
-	begin
-	print 'No se eliminó el vehículo ya que el mismo posee alquileres en la base de datos'
+if exists(select * from Alquileres where vehiculo=@matricula)
 	return -2
-	end
---Se chequea que no sea un utilitario.
-else if exists(select * from Utilitarios where matricula=@vehiculo)
-	begin
-	print 'La matrícula ingresada corresponde a un utilitario'
-	return -3
-	end
-else
-	begin
-	begin transaction
-			-- Se elimina el registro de la tabla Autos
-			delete from Autos where Autos.matricula=@vehiculo
-			-- Si se produce algún error al hacer lo anterior se hace el rollback
-			if @@ERROR<>0
-			begin
-				rollback transaction
-				print 'No se pudo eliminar el vehículo'
-				return 0
-			end
-			--Se elimina el registro de la tabla vehículos
-			delete from Vehiculos where Vehiculos.matricula=@vehiculo
-			-- Si se produce algún error al hacer lo anterior se hace el rollback
-			if @@ERROR<>0
-			begin
-				rollback transaction
-				print 'No se pudo eliminar el vehículo'
-				return 0
-			end
-	-- Si no se produjo ningún error, se confirma el proceso y se muestra el mensaje correspondiente
-	commit transaction
-	print 'El auto se eliminó correctamente'
-	return 1
-	end;
 
-go 
+begin transaction
+	-- Se elimina el registro de la tabla Autos
+	delete from Autos where Autos.matricula=@matricula
+	--Se elimina el registro de la tabla vehículos
+	delete from Vehiculos where Vehiculos.matricula=@matricula
+	-- Si se produce algún error al hacer lo anterior se hace el rollback
+if @@ERROR<>0
+begin
+	rollback transaction
+	return -3
+end
+else
+begin
+	commit transaction
+	return 1
+end
+go
 
 
 
@@ -452,65 +428,35 @@ end
 go
 
 
-
-
-
-
-
-
-
 -- Se crea procedimiento para eliminar Utilitario
 create procedure Eliminar_Utilitario
 -- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
-@vehiculo varchar(7)
+@matricula varchar(7)
 as
 -- Se chequea que exista la matrícula en la base de datos, y si no existe se muestra el error
-if not exists(select * from Vehiculos where matricula=@vehiculo)
-	begin
-	print 'El vehículo no existe en la base de datos'
+if not exists(select * from Vehiculos where matricula=@matricula)
 	return -1
-	end
 -- Se chequea qeu el vehículo que se desea almacenar no posea ningún alquiler asociado, si lo posee se muestra el error
-else if exists(select * from Alquileres where vehiculo=@vehiculo)
-	begin
-	print 'No se eliminó el vehículo ya que el mismo posee alquileres en la base de datos'
+if exists(select * from Alquileres where vehiculo=@matricula)
 	return -2
-	end
---Se chequea que no sea un auto.
-else if exists(select * from Autos where matricula=@vehiculo)
-	begin
-	print 'La matrícula ingresada corresponde a un auto'
+
+begin transaction
+	-- Se elimina el registro de la tabla Utilitarios
+	delete from Utilitarios where Utilitarios.matricula=@matricula
+	--Se elimina el registro de la tabla vehículos
+	delete from Vehiculos where Vehiculos.matricula=@matricula
+	-- Si se produce algún error al hacer lo anterior se hace el rollback
+if @@ERROR<>0
+begin
+	rollback transaction
 	return -3
-	end
+end
 else
-	begin
-	begin transaction
-			-- Se elimina el registro de la tabla Autos
-			delete from Utilitarios where Utilitarios.matricula=@vehiculo
-			-- Si se produce algún error al hacer lo anterior se hace el rollback
-			if @@ERROR<>0
-			begin
-				rollback transaction
-				print 'No se pudo eliminar el vehículo'
-				return 0
-			end
-			--Se elimina el registro de la tabla vehículos
-			delete from Vehiculos where Vehiculos.matricula=@vehiculo
-			-- Si se produce algún error al hacer lo anterior se hace el rollback
-			if @@ERROR<>0
-			begin
-				rollback transaction
-				print 'No se pudo eliminar el vehículo'
-				return 0
-			end
-	-- Si no se produjo ningún error, se confirma el proceso y se muestra el mensaje correspondiente
+begin
 	commit transaction
-	print 'El utilitario se eliminó correctamente'
 	return 1
-	end;
-
-go 
-
+end
+go
 
 
 -- ***********************************************************************************************

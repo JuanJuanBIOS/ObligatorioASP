@@ -161,5 +161,48 @@ namespace Persistencia
                 oConexion.Close();
             }
         }
+
+
+        public static void Eliminar(Utilitario unU)
+        {
+            SqlConnection oConexion = new SqlConnection(Conexion.STR);
+            SqlCommand oComando = new SqlCommand("Eliminar_Utilitario ", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+
+            oComando.Parameters.AddWithValue("@matricula", unU.Matricula);
+
+            SqlParameter oRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+            oRetorno.Direction = ParameterDirection.ReturnValue;
+            oComando.Parameters.Add(oRetorno);
+
+            try
+            {
+                oConexion.Open();
+                oComando.ExecuteNonQuery();
+
+                int oAfectados = (int)oComando.Parameters["@Retorno"].Value;
+
+                if (oAfectados == -1)
+                {
+                    throw new Exception("El Utilitario no existe en la base de datos");
+                }
+                else if (oAfectados == -2)
+                {
+                    throw new Exception("El Utilitario no se puede eliminar porque posee alquileres");
+                }
+                else if (oAfectados == -3)
+                {
+                    throw new Exception("Error en la base de datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+        }
     }
 }

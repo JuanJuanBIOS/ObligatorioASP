@@ -37,7 +37,8 @@
     
         <asp:Label ID="LblInMatriculaAutos" runat="server" 
             Text="Ingrese la matrícula: "></asp:Label>
-        <asp:TextBox ID="TBInMatriculaAutos" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TBInMatriculaAutos" runat="server" 
+            ontextchanged="TBInMatriculaAutos_TextChanged"></asp:TextBox>
         <asp:Button ID="BtnBuscarAutos" runat="server" Text="Buscar" 
                         onclick="BtnBuscarAutos_Click" />
     
@@ -124,7 +125,8 @@
                         onclick="BtnConfirmarAutos_Click"/>
                 </td>
                 <td>
-                    <asp:Button ID="BtnEliminarAutos" runat="server" Text="Eliminar" Enabled="false" />
+                    <asp:Button ID="BtnEliminarAutos" runat="server" Text="Eliminar" 
+                        Enabled="false" onclick="BtnEliminarAutos_Click" />
                     <asp:Button ID="BtnVolverAutos" runat="server" onclick="BtnVolverAuto_Click" 
                         Text="Volver al Menú Principal" />
                 </td>
