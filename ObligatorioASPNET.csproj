@@ -57,6 +57,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Listados.aspx" />
     <Content Include="MantenimientoAutos.aspx" />
     <Content Include="MantenimientoClientes.aspx" />
     <Content Include="MantenimientoUtilitarios.aspx" />
@@ -119,6 +120,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Listados.aspx.cs">
+      <DependentUpon>Listados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Listados.aspx.designer.cs">
+      <DependentUpon>Listados.aspx</DependentUpon>
     </Compile>
     <Compile Include="MantenimientoAutos.aspx.cs">
       <DependentUpon>MantenimientoAutos.aspx</DependentUpon>

@@ -99,7 +99,7 @@
                 <td class="style10">
                 </td>
                 <td class="style11">
-                    Fecha de fin:
+                    Fecha de Fin:
                     <asp:TextBox ID="TBFinAlquiler" runat="server" Enabled="False"></asp:TextBox>
                 </td>
                 <td class="style12">

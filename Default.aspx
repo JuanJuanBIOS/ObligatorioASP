@@ -23,7 +23,8 @@
             NavigateUrl="~/Realizar Alquiler.aspx">Realizar Alquiler</asp:HyperLink>
         <br />
         <br />
-        <asp:HyperLink ID="HyperLinkListado" runat="server">Listado de vehículos disponibles</asp:HyperLink>
+        <asp:HyperLink ID="HyperLinkListado" runat="server" 
+            NavigateUrl="~/Listados.aspx">Listado de vehículos disponibles</asp:HyperLink>
         <br />
         <br />
         <asp:HyperLink ID="HyperLinkTotal" runat="server">Total recaudado por vehículo</asp:HyperLink>

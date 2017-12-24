@@ -130,17 +130,31 @@ namespace ObligatorioASPNET
             LblErrorAlquiler.Text = "";
             TBInicioAlquiler.Text = CalInicioAlquiler.SelectedDate.ToShortDateString();
             if (CalInicioAlquiler.SelectedDate.Date < DateTime.Now.Date)
+            {
+                LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
                 LblErrorAlquiler.Text = "La fecha de Inicio no puede ser anterior al día de hoy";
+            }
             if (CalInicioAlquiler.SelectedDate >= CalFinAlquiler.SelectedDate && TBFinAlquiler.Text != "")
+            {
+                LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
                 LblErrorAlquiler.Text = "La fecha de Fin debe ser mayor a la fecha de Inicio";
+            }
         }
 
         protected void CalFinAlquiler_SelectionChanged(object sender, EventArgs e)
         {
             LblErrorAlquiler.Text = "";
             TBFinAlquiler.Text = CalFinAlquiler.SelectedDate.ToShortDateString();
+            if (CalInicioAlquiler.SelectedDate.Date < DateTime.Now.Date)
+            {
+                LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
+                LblErrorAlquiler.Text = "La fecha de Inicio no puede ser anterior al día de hoy";
+            }
             if (CalInicioAlquiler.SelectedDate >= CalFinAlquiler.SelectedDate && TBInicioAlquiler.Text != "")
+            {
+                LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
                 LblErrorAlquiler.Text = "La fecha de Fin debe ser mayor a la fecha de Inicio";
+            }
         }
 
         protected void BtnVolverAlquiler_Click(object sender, EventArgs e)
