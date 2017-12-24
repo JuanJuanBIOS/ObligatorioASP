@@ -9,9 +9,14 @@ namespace Logica
 {
     public class LogicaAlquiler
     {
-        public static void Realizar_Alquiler(Alquiler Alq)
+        public static void Consultar_Alquiler(Alquiler Alq)
         {
-            PersistenciaAlquiler.Realizar_Alquiler(Alq);
+            PersistenciaAlquiler.Consultar_Alquiler(Alq);
+        }
+
+        public static void Confirmar_Alquiler(Alquiler Alq)
+        {
+            PersistenciaAlquiler.Confirmar_Alquiler(Alq);
         }
     }
 }

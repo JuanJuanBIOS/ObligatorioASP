@@ -94,6 +94,15 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.Label LblErrorAlquiler;
         
         /// <summary>
+        /// BtnOkAlquiler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnOkAlquiler;
+        
+        /// <summary>
         /// BtnRealizarAlquiler control.
         /// </summary>
         /// <remarks>
@@ -110,5 +119,23 @@ namespace ObligatorioASPNET {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnConfirmarAlquiler;
+        
+        /// <summary>
+        /// BtnCancelarAlquiler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCancelarAlquiler;
+        
+        /// <summary>
+        /// BtnVolverAlquiler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnVolverAlquiler;
     }
 }

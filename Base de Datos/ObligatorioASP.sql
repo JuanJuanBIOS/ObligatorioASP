@@ -464,47 +464,103 @@ go
 -- ***********************************************************************************************
 
 
--- Se crea procedimiento para realizar un alquiler
-create procedure Realizar_Alquiler
+-- Se crea procedimiento para consultar posibles errores al realizar un alquiler
+create procedure Consultar_Alquiler
 -- Se definen las variables de entrada al proceso
-@vehiculo varchar(7),
-@cliente varchar(15),
+@matricula varchar(7),
+@cedula varchar(15),
 @fechainicio datetime,
-@fechafin datetime
+@fechafin datetime,
+@costo int
 as
 -- Se chequea que exista la matrícula en la base de datos, y si no existe se muestra el error
-if not exists(select * from Vehiculos where matricula=@vehiculo)
-	return -1
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+		return -1
+	end
 -- Se chequea que exista el cliente en la base de datos, y si no existe se muestra el error
-if not exists(select * from Clientes where documento=@cliente)
-	return -2
+else if not exists(select * from Clientes where documento=@cedula)
+	begin
+		return -2
+	end
 -- Se chequea que la fecha de inicio no sea anterior al dia de hoy
-if (@fechainicio<GETDATE())
-	return -3
+else if (@fechainicio<GETDATE())
+	begin
+		return -3
+	end
 -- Se chequea que la fecha de fin sea posterior a la fecha de inicio
-if (@fechainicio>=@fechafin)
-	return -4
+else if (@fechainicio>=@fechafin)
+	begin
+		return -4
+	end
 -- Se chequea que el vehículo que se desea alquilar no se encuentre alquilado en las fechas solicitadas
-if	(exists (select * from Alquileres where (Alquileres.vehiculo=@vehiculo and @fechafin<=Alquileres.fechafin and @fechafin>=Alquileres.fechainicio)) or
-	exists (select * from Alquileres where (Alquileres.vehiculo=@vehiculo and @fechainicio<=Alquileres.fechafin and @fechainicio>=Alquileres.fechainicio)) or
-	exists (select * from Alquileres where (Alquileres.vehiculo=@vehiculo and @fechainicio<=Alquileres.fechainicio and @fechafin>=Alquileres.fechafin)))
-
-	return -5
-
-begin transaction
-declare @costo int
-set @costo = DATEDIFF(day,@fechainicio,@fechafin) * (select Vehiculos.costodiario from Vehiculos where Vehiculos.matricula=@vehiculo)
-insert into Alquileres values (@vehiculo,@cliente,@fechainicio,@fechafin,@costo)
-if @@ERROR<>0
-		begin
-			rollback transaction
-			return -6
-		end
-commit transaction
-return 1
+else if	(exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechafin<=Alquileres.fechafin and @fechafin>=Alquileres.fechainicio)) or
+	exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechainicio<=Alquileres.fechafin and @fechainicio>=Alquileres.fechainicio)) or
+	exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechainicio<=Alquileres.fechainicio and @fechafin>=Alquileres.fechafin)))
+	begin
+		return -5
+	end
+else
+	return 1
 go
 
 
+-- Se crea procedimiento para confirmar un alquiler
+create procedure Confirmar_Alquiler
+-- Se definen las variables de entrada al proceso
+@matricula varchar(7),
+@cedula varchar(15),
+@fechainicio datetime,
+@fechafin datetime,
+@costo int
+as
+-- Se chequea que exista la matrícula en la base de datos, y si no existe se muestra el error
+if not exists(select * from Vehiculos where matricula=@matricula)
+	begin
+		return -1
+		--print 'Error -1'
+	end
+-- Se chequea que exista el cliente en la base de datos, y si no existe se muestra el error
+else if not exists(select * from Clientes where documento=@cedula)
+	begin
+		return -2
+		--print 'Error -2'
+	end
+-- Se chequea que la fecha de inicio no sea anterior al dia de hoy
+else if (@fechainicio<GETDATE())
+	begin
+		return -3
+		--print 'Error -3'
+	end
+-- Se chequea que la fecha de fin sea posterior a la fecha de inicio
+else if (@fechainicio>=@fechafin)
+	begin
+		return -4
+		--print 'Error -4'
+	end
+-- Se chequea que el vehículo que se desea alquilar no se encuentre alquilado en las fechas solicitadas
+else if	(exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechafin<=Alquileres.fechafin and @fechafin>=Alquileres.fechainicio)) or
+	exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechainicio<=Alquileres.fechafin and @fechainicio>=Alquileres.fechainicio)) or
+	exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechainicio<=Alquileres.fechainicio and @fechafin>=Alquileres.fechafin)))
+	begin
+		return -5
+		--print 'Error -5'
+	end
+else
+	begin
+	begin transaction
+	insert into Alquileres values (@matricula,@cedula,@fechainicio,@fechafin,@costo)
+	if @@ERROR<>0
+			begin
+				rollback transaction
+				return -6
+				--print 'Error -6'
+			end
+	commit transaction
+	--print 'ok'
+	return 1
+	end
+go
 
 
 

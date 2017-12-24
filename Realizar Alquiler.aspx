@@ -111,25 +111,48 @@
                 <td class="style7">
                     &nbsp;</td>
                 <td class="style6" colspan="3">
-                    <asp:Label ID="LblErrorAlquiler" runat="server" ForeColor="Red"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td>
                     &nbsp;</td>
             </tr>
             <tr>
                 <td class="style7">
                     &nbsp;</td>
-                <td class="style6">
+                <td class="style6" colspan="3">
+                    <asp:Label ID="LblErrorAlquiler" runat="server" ForeColor="Red"></asp:Label>
+                </td>
+                <td>
+                    <asp:Button ID="BtnOkAlquiler" runat="server" onclick="BtnOkAlquiler_Click" 
+                        Text="Ok" Visible="False" />
+                </td>
+            </tr>
+            <tr>
+                <td class="style7">
+                    &nbsp;</td>
+                <td class="style6" colspan="3">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="style7">
                     <asp:Button ID="BtnRealizarAlquiler" runat="server" 
                         onclick="BtnRealizarAlquiler_Click" Text="Realizar Alquiler" />
                 </td>
+                <td class="style6">
+                    <asp:Button ID="BtnConfirmarAlquiler" runat="server" 
+                        onclick="BtnConfirmarAlquiler_Click" Text="Confirmar Alquiler" 
+                        Enabled="False" />
+                </td>
                 <td class="style4">
-                    &nbsp;</td>
+                    <asp:Button ID="BtnCancelarAlquiler" runat="server" Enabled="False" 
+                        onclick="BtnCancelarAlquiler_Click" Text="Cancelar Alquiler" />
+                </td>
                 <td class="style5">
                     &nbsp;</td>
                 <td>
-                    <asp:Button ID="BtnConfirmarAlquiler" runat="server" 
-                        onclick="BtnConfirmarAlquiler_Click" Text="Confirmar Alquiler" />
+                    <asp:Button ID="BtnVolverAlquiler" runat="server" 
+                        onclick="BtnVolverAlquiler_Click" Text="Volver al Menú Principal" />
                 </td>
             </tr>
         </table>
