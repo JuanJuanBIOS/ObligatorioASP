@@ -484,7 +484,7 @@ else if not exists(select * from Clientes where documento=@cedula)
 		return -2
 	end
 -- Se chequea que la fecha de inicio no sea anterior al dia de hoy
-else if (@fechainicio<GETDATE())
+else if (@fechainicio<convert(date,GETDATE()))
 	begin
 		return -3
 	end
@@ -517,34 +517,34 @@ as
 -- Se chequea que exista la matrícula en la base de datos, y si no existe se muestra el error
 if not exists(select * from Vehiculos where matricula=@matricula)
 	begin
+		print 'Error -1'
 		return -1
-		--print 'Error -1'
 	end
 -- Se chequea que exista el cliente en la base de datos, y si no existe se muestra el error
 else if not exists(select * from Clientes where documento=@cedula)
 	begin
+		print 'Error -2'
 		return -2
-		--print 'Error -2'
 	end
 -- Se chequea que la fecha de inicio no sea anterior al dia de hoy
-else if (@fechainicio<GETDATE())
+else if (@fechainicio<convert(date,GETDATE()))
 	begin
+		print 'Error -3'
 		return -3
-		--print 'Error -3'
 	end
 -- Se chequea que la fecha de fin sea posterior a la fecha de inicio
 else if (@fechainicio>=@fechafin)
 	begin
+		print 'Error -4'
 		return -4
-		--print 'Error -4'
 	end
 -- Se chequea que el vehículo que se desea alquilar no se encuentre alquilado en las fechas solicitadas
 else if	(exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechafin<=Alquileres.fechafin and @fechafin>=Alquileres.fechainicio)) or
 	exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechainicio<=Alquileres.fechafin and @fechainicio>=Alquileres.fechainicio)) or
 	exists (select * from Alquileres where (Alquileres.vehiculo=@matricula and @fechainicio<=Alquileres.fechainicio and @fechafin>=Alquileres.fechafin)))
 	begin
+		print 'Error -5'
 		return -5
-		--print 'Error -5'
 	end
 else
 	begin
@@ -553,17 +553,14 @@ else
 	if @@ERROR<>0
 			begin
 				rollback transaction
-				return -6
-				--print 'Error -6'
+				print 'Error -6'
+				return -6				
 			end
 	commit transaction
-	--print 'ok'
+	print 'ok'
 	return 1
 	end
 go
-
-
-
 
 
 -- Se crea procedimiento para obtener el total recaudado de un vehículo
