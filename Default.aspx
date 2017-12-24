@@ -19,7 +19,8 @@
         <asp:HyperLink ID="HyperLinkUtilitarios" runat="server" NavigateUrl="~/MantenimientoUtilitarios.aspx">Mantenimiento de Utilitarios</asp:HyperLink>
         <br />
         <br />
-        <asp:HyperLink ID="HyperLinkAlquiler" runat="server">Realizar Alquiler</asp:HyperLink>
+        <asp:HyperLink ID="HyperLinkAlquiler" runat="server" 
+            NavigateUrl="~/Realizar Alquiler.aspx">Realizar Alquiler</asp:HyperLink>
         <br />
         <br />
         <asp:HyperLink ID="HyperLinkListado" runat="server">Listado de vehículos disponibles</asp:HyperLink>

@@ -7,7 +7,11 @@ using EntidadesCompartidas;
 
 namespace Logica
 {
-    public class LogicaUtilitario
+    public class LogicaAlquiler
     {
+        public static void Realizar_Alquiler(Alquiler Alq)
+        {
+            PersistenciaAlquiler.Realizar_Alquiler(Alq);
+        }
     }
 }

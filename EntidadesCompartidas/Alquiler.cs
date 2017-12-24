@@ -13,6 +13,7 @@ namespace EntidadesCompartidas
         private Vehiculo _Vehiculo;
         private DateTime _FechaIni;
         private DateTime _FechaFin;
+        private int _Costo;
 
         //Propiedades
         public Cliente Cliente
@@ -67,7 +68,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error en la fecha de inicio");
+                    throw new Exception("La fecha de inicio no puede ser anterior al día de hoy");
                 }
             }
         }
@@ -88,7 +89,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error: Debe haber diferencia de 1 dia minimo...");
+                    throw new Exception("La fecha de fin debe ser mayor a la fecha de inicio");
                 }
             }
         }
@@ -97,8 +98,16 @@ namespace EntidadesCompartidas
         {
             get
             {
-                int cantDias = (_FechaFin.Subtract(_FechaIni)).Days;
-                return (this._Vehiculo.CostoAlquiler * cantDias);
+                /*int cantDias = (_FechaFin.Subtract(_FechaIni)).Days;
+                return (this._Vehiculo.CostoAlquiler * cantDias);*/
+                return _Costo;
+            }
+            set
+            {
+                if (value > 0)
+                    _Costo = value;
+                else
+                    throw new Exception("Error: Costo de Alquiler");
             }
         }
 
@@ -116,12 +125,13 @@ namespace EntidadesCompartidas
 
 
        //Constructor
-        public Alquiler(Cliente pCliente, Vehiculo pVehiculo, DateTime pFechainicio, DateTime pFechafin)
+        public Alquiler(Cliente pCliente, Vehiculo pVehiculo, DateTime pFechainicio, DateTime pFechafin, int pCosto)
         {
             Cliente = pCliente;
             Vehiculo = pVehiculo;
             FechaInicio = pFechainicio;
             FechaFin = pFechafin;
+            Costo = pCosto;
         }
 
     }

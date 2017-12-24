@@ -25,6 +25,7 @@ namespace ObligatorioASPNET
             BtnConfirmarUtilitarios.Enabled = false;
             BtnEliminarUtilitarios.Enabled = false;
 
+            LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
             LblErrorUtilitarios.Text = "";
             TBMarcaUtilitarios.Text = "";
             TBModeloUtilitarios.Text = "";
@@ -106,6 +107,7 @@ namespace ObligatorioASPNET
             }
             catch
             {
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                 LblErrorUtilitarios.Text = "Ingrese una matrícula válida";
                 return;
             }
@@ -116,6 +118,7 @@ namespace ObligatorioASPNET
 
                 if (Veh == null)
                 {
+                    LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                     LblErrorUtilitarios.Text = "La matrícula ingresada no existe en la base de datos. Ingrese los datos y presione 'Crear'";
                     this.ActivoBotonesA();
                     TBAnioUtilitarios.Text = "0";
@@ -126,6 +129,7 @@ namespace ObligatorioASPNET
 
                 else if (Veh is Auto)
                 {
+                    LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                     throw new Exception("La matrícula ingresada corresponde a un Auto");
                     this.LimpioFormulario();
                 }
@@ -144,6 +148,7 @@ namespace ObligatorioASPNET
             }
             catch (Exception ex)
             {
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                 LblErrorUtilitarios.Text = ex.Message;
             }
         }
@@ -165,12 +170,14 @@ namespace ObligatorioASPNET
                 Utilitario unUtilitario = new Utilitario(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oCapacidad, oTipo);
 
                 LogicaVehiculo.Crear(unUtilitario);
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Blue;
                 LblErrorUtilitarios.Text = "El Utilitario ha sido ingresado a la base de datos correctamente.";
                 BloqueoCampos();
             }
 
             catch (Exception ex)
             {
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                 LblErrorUtilitarios.Text = ex.Message;
             }
         }
@@ -203,6 +210,7 @@ namespace ObligatorioASPNET
                 Utilitario unUtilitario = new Utilitario(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oCapacidad, oTipo);
 
                 LogicaVehiculo.Modificar(unUtilitario);
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Blue;
                 LblErrorUtilitarios.Text = "El Utilitario ha sido modificado correctamente.";
                 BloqueoCampos();
                 TBInMatriculaUtilitarios.Enabled = true;
@@ -210,6 +218,7 @@ namespace ObligatorioASPNET
 
             catch (Exception ex)
             {
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                 LblErrorUtilitarios.Text = ex.Message;
             }
         }
@@ -232,11 +241,13 @@ namespace ObligatorioASPNET
 
                 LogicaVehiculo.Eliminar(unUtilitario);
                 LimpioFormulario();
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Blue;
                 LblErrorUtilitarios.Text = "El Utilitario ha sido eliminado correctamente.";
             }
 
             catch (Exception ex)
             {
+                LblErrorUtilitarios.ForeColor = System.Drawing.Color.Red;
                 LblErrorUtilitarios.Text = ex.Message;
             }
         }

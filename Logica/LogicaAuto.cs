@@ -9,9 +9,5 @@ namespace Logica
 {
     public class LogicaAuto
     {
-        public static Auto Buscar(string matricula)
-        {
-            return PersistenciaAuto.Buscar(matricula);
-        }
     }
 }

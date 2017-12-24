@@ -25,6 +25,7 @@ namespace ObligatorioASPNET
             BtnConfirmarAutos.Enabled = false;
             BtnEliminarAutos.Enabled = false;
 
+            LblErrorAutos.ForeColor = System.Drawing.Color.Red;
             LblErrorAutos.Text = "";
             TBMarcaAutos.Text = "";
             TBModeloAutos.Text = "";
@@ -103,6 +104,7 @@ namespace ObligatorioASPNET
             }
             catch
             {
+                LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                 LblErrorAutos.Text = "Ingrese una matrícula válida";
                 return;
             }
@@ -113,6 +115,7 @@ namespace ObligatorioASPNET
 
                 if (Veh == null)
                 {
+                    LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                     LblErrorAutos.Text = "La matrícula ingresada no existe en la base de datos. Ingrese los datos y presione 'Crear'";
                     this.ActivoBotonesA();
                     TBAnioAutos.Text = "0";
@@ -122,6 +125,7 @@ namespace ObligatorioASPNET
 
                 else if (Veh is Utilitario)
                 {
+                    LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                     throw new Exception("La matrícula ingresada corresponde a un Utilitario");
                     this.LimpioFormulario();
                 }
@@ -139,6 +143,7 @@ namespace ObligatorioASPNET
             }
             catch (Exception ex)
             {
+                LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                 LblErrorAutos.Text = ex.Message;
             }
         }
@@ -159,12 +164,14 @@ namespace ObligatorioASPNET
                 Auto unAuto = new Auto(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oTipo);
 
                 LogicaVehiculo.Crear(unAuto);
+                LblErrorAutos.ForeColor = System.Drawing.Color.Blue;
                 LblErrorAutos.Text = "El Auto ha sido ingresado a la base de datos correctamente.";
                 BloqueoCampos();
             }
 
             catch (Exception ex)
             {
+                LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                 LblErrorAutos.Text = ex.Message;
             }
         }
@@ -195,6 +202,7 @@ namespace ObligatorioASPNET
                 Auto unAuto = new Auto(oMatricula, oMarca, oModelo, oAnio, oCantPuertas, oCostoDiario, oCateogria, oTipo);
 
                 LogicaVehiculo.Modificar(unAuto);
+                LblErrorAutos.ForeColor = System.Drawing.Color.Blue;
                 LblErrorAutos.Text = "El Auto ha sido modificaro correctamente.";
                 BloqueoCampos();
                 TBInMatriculaAutos.Enabled = true;
@@ -202,6 +210,7 @@ namespace ObligatorioASPNET
 
             catch (Exception ex)
             {
+                LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                 LblErrorAutos.Text = ex.Message;
             }
         }
@@ -225,11 +234,13 @@ namespace ObligatorioASPNET
                 BtnBuscarAutos_Click(unAuto, e);
                 LogicaVehiculo.Eliminar(unAuto);
                 LimpioFormulario();
+                LblErrorAutos.ForeColor = System.Drawing.Color.Blue;
                 LblErrorAutos.Text = "El Auto ha sido eliminado correctamente.";
             }
 
             catch (Exception ex)
             {
+                LblErrorAutos.ForeColor = System.Drawing.Color.Red;
                 LblErrorAutos.Text = ex.Message;
             }
         }
