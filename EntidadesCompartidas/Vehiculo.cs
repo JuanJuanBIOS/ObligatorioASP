@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EntidadesCompartidas
 {
-    public abstract class Vehiculo
+    public class Vehiculo
     {
 
         //Atributos

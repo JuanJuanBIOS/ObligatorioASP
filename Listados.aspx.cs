@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using EntidadesCompartidas;
+using Logica;
 
 namespace ObligatorioASPNET
 {
@@ -11,7 +15,17 @@ namespace ObligatorioASPNET
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+                this.LimpioFormulario();
+        }
 
+        private void LimpioFormulario()
+        {
+            CalInicioListado.Enabled = true;
+            CalFinListado.Enabled = true;
+
+            LblErrorListado.ForeColor = System.Drawing.Color.Red;
+            LblErrorListado.Text = "";
         }
 
         protected void CalInicioListado_SelectionChanged(object sender, EventArgs e)
@@ -53,6 +67,28 @@ namespace ObligatorioASPNET
         protected void BtnVolverListado_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
+        }
+
+        protected void BtnVerListado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((TBInicioListado.Text == "") || (TBFinListado.Text == ""))
+                {
+                    LblErrorListado.ForeColor = System.Drawing.Color.Red;
+                    LblErrorListado.Text = "Se debe seleccionar una fecha de inicio y una fecha de fin para ver el listado";
+                }
+                else
+                {
+                    GVDisponiblesListado.DataSource = LogicaVehiculo.Dispoibles_por_periodo(Convert.ToDateTime(TBInicioListado.Text), Convert.ToDateTime(TBFinListado.Text));
+                    GVDisponiblesListado.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                LblErrorListado.ForeColor = System.Drawing.Color.Red;
+                LblErrorListado.Text = ex.Message;
+            }
         }
     }
 }

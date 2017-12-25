@@ -70,5 +70,14 @@ namespace Logica
                 throw new Exception("No se indicó un vehículo para eliminar");
             }
         }
+
+        public static List<EntidadesCompartidas.Vehiculo> Dispoibles_por_periodo(DateTime FechaIni, DateTime FechaFin)
+        {
+            List<Vehiculo> Disponibles = new List<Vehiculo>();
+
+            Disponibles.AddRange(PersistenciaVehiculo.Disponibles_por_periodo(FechaIni, FechaFin));
+
+            return Disponibles;
+        }
     }
 }

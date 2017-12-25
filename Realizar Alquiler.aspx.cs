@@ -40,38 +40,46 @@ namespace ObligatorioASPNET
         {
             try
             {
-                Cliente oCliente = Logica.LogicaCliente.Buscar(Convert.ToInt32(TBClienteAlquiler.Text));
-                Vehiculo oVehiculo = Logica.LogicaVehiculo.Buscar(TBMatriculaAlquiler.Text);
-                DateTime oFechaIni = CalInicioAlquiler.SelectedDate;
-                DateTime oFechaFin = CalFinAlquiler.SelectedDate;
-                
-
-                if (oCliente == null)
+                if ((TBClienteAlquiler.Text == "") || (TBMatriculaAlquiler.Text == "") || (TBInicioAlquiler.Text == "") || (TBFinAlquiler.Text == ""))
                 {
                     LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
-                    LblErrorAlquiler.Text = "El cliente ingresado no existe en la base de datos";
-                }
-                else if (oVehiculo == null)
-                {
-                    LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
-                    LblErrorAlquiler.Text = "El vehículo ingresado no existe en la base de datos";
+                    LblErrorAlquiler.Text = "Se deben completar todos los campos requeridos";
                 }
                 else
                 {
-                    int oCosto = (oFechaFin.Subtract(oFechaIni)).Days * oVehiculo.CostoAlquiler;
+                    Cliente oCliente = Logica.LogicaCliente.Buscar(Convert.ToInt32(TBClienteAlquiler.Text));
+                    Vehiculo oVehiculo = Logica.LogicaVehiculo.Buscar(TBMatriculaAlquiler.Text);
+                    DateTime oFechaIni = CalInicioAlquiler.SelectedDate;
+                    DateTime oFechaFin = CalFinAlquiler.SelectedDate;
 
-                    Alquiler unAlquiler = new Alquiler(oCliente, oVehiculo, oFechaIni, oFechaFin, oCosto);
 
-                    LogicaAlquiler.Consultar_Alquiler(unAlquiler);
-                    LblErrorAlquiler.ForeColor = System.Drawing.Color.Blue;
-                    LblErrorAlquiler.Text = "El costo del alquiler será de $" + unAlquiler.Costo + ". ¿Desea confirmar el alquiler?";
-                    TBClienteAlquiler.Enabled = false;
-                    TBMatriculaAlquiler.Enabled = false;
-                    CalInicioAlquiler.Enabled = false;
-                    CalFinAlquiler.Enabled = false;
-                    BtnRealizarAlquiler.Enabled = false;
-                    BtnConfirmarAlquiler.Enabled = true;
-                    BtnCancelarAlquiler.Enabled = true;
+                    if (oCliente == null)
+                    {
+                        LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
+                        LblErrorAlquiler.Text = "El cliente ingresado no existe en la base de datos";
+                    }
+                    else if (oVehiculo == null)
+                    {
+                        LblErrorAlquiler.ForeColor = System.Drawing.Color.Red;
+                        LblErrorAlquiler.Text = "El vehículo ingresado no existe en la base de datos";
+                    }
+                    else
+                    {
+                        int oCosto = (oFechaFin.Subtract(oFechaIni)).Days * oVehiculo.CostoAlquiler;
+
+                        Alquiler unAlquiler = new Alquiler(oCliente, oVehiculo, oFechaIni, oFechaFin, oCosto);
+
+                        LogicaAlquiler.Consultar_Alquiler(unAlquiler);
+                        LblErrorAlquiler.ForeColor = System.Drawing.Color.Blue;
+                        LblErrorAlquiler.Text = "El costo del alquiler será de $" + unAlquiler.Costo + ". ¿Desea confirmar el alquiler?";
+                        TBClienteAlquiler.Enabled = false;
+                        TBMatriculaAlquiler.Enabled = false;
+                        CalInicioAlquiler.Enabled = false;
+                        CalFinAlquiler.Enabled = false;
+                        BtnRealizarAlquiler.Enabled = false;
+                        BtnConfirmarAlquiler.Enabled = true;
+                        BtnCancelarAlquiler.Enabled = true;
+                    }
                 }
             }
 

@@ -73,7 +73,9 @@
                     onselectionchanged="CalInicioListado_SelectionChanged"></asp:Calendar>
             </td>
             <td class="style23" rowspan="3">
-                &nbsp;</td>
+                <asp:GridView ID="GVDisponiblesListado" runat="server" >
+                </asp:GridView>
+            </td>
         </tr>
         <tr>
             <td class="style24">
@@ -114,8 +116,9 @@
         </tr>
         <tr>
             <td class="style24" colspan="2">
-                <asp:Button ID="BtnVerListado" runat="server" Enabled="False" 
-                    Text="Ver  Listado de Vehículos disponibles" />
+                <asp:Button ID="BtnVerListado" runat="server" 
+                    Text="Ver  Listado de Vehículos disponibles" 
+                    onclick="BtnVerListado_Click" />
             </td>
             <td class="style23">
                 <asp:Button ID="BtnVolverListado" runat="server" 
