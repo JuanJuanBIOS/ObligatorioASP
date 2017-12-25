@@ -22,6 +22,15 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// LblTituloClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTituloClientes;
+        
+        /// <summary>
         /// LblInDocumento control.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.TextBox TBInDocumento;
         
         /// <summary>
-        /// LblErrorClientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblErrorClientes;
-        
-        /// <summary>
         /// BtnBuscarClientes control.
         /// </summary>
         /// <remarks>
@@ -56,6 +56,15 @@ namespace ObligatorioASPNET {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnBuscarClientes;
+        
+        /// <summary>
+        /// LblErrorClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblErrorClientes;
         
         /// <summary>
         /// TBNombreClientes control.
@@ -128,5 +137,23 @@ namespace ObligatorioASPNET {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnEliminarClientes;
+        
+        /// <summary>
+        /// BtnVolverClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnVolverClientes;
+        
+        /// <summary>
+        /// BtnConfirmarClientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnConfirmarClientes;
     }
 }

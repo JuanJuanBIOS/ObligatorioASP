@@ -14,5 +14,16 @@ namespace Logica
             return PersistenciaCliente.Buscar(cedula);
         }
 
+
+        public static void Modificar(Cliente unCli)
+        {
+            PersistenciaCliente.Modificar(unCli);
+        }
+
+        public static void Eliminar(Cliente unCli)
+        {
+            PersistenciaCliente.Eliminar(unCli);
+        }
+
     }
 }

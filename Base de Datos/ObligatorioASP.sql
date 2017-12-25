@@ -165,8 +165,8 @@ End
 go
 
 --Prueba de procedimiento
- Crear_Cliente 4167345, 4967296361175688, 'Juan Manuel Perez','Avenida Italia 1548','45863458','2/1/1988'
- go
+ --Crear_Cliente 4167345, 4967296361175688, 'Juan Manuel Perez','Avenida Italia 1548','45863458','2/1/1988'
+-- go
 
 create procedure Modificar_Cliente	@documento int ,@tarjeta bigint, @nombre varchar(30), @direccion varchar(50), @telefono varchar(30),
                                      @fechanac datetime AS
@@ -199,27 +199,34 @@ go
 
 
 
-
  --Creo procedimiento para eliminación de Cliente
- CREATE PROCEDURE Eliminar_Cliente @documento int ,@tarjeta bigint, @nombre varchar(30), @direccion varchar(50), @telefono varchar(30),
-                                     @fechanac datetime AS
-Begin
-	if (EXISTS(Select * From Clientes Where documento = @documento))
-	begin
-		return -1
-		print 'El cliente ya existe'
-	end
-		
-INSERT INTO Clientes VALUES (@documento, @tarjeta, @nombre, @direccion, @telefono, @fechanac)
-	
-	IF(@@Error=0)
-		RETURN 1
-	ELSE
-		RETURN -3
-End
+ CREATE PROCEDURE Eliminar_Cliente 
+ --Se crea variable de entrada del proceso, clave principal
+  @documento int  AS
+ -- Se chequea que exista el cliente en la base de datos, y si no existe se muestra el error
+if not exists(select * from Clientes where documento=@documento)
+return -1
+
+begin transaction
+	--Se elimina el registro de la tabla Alquileres
+	delete from Alquileres where Alquileres.cliente=@documento
+	-- Se elimina el registro de la tabla Clientes
+	delete from Clientes where Clientes.documento=@documento
+	-- Si se produce algún error al hacer lo anterior se hace el rollback
+if @@ERROR<>0
+begin
+	rollback transaction
+	return -3
+end
+else
+begin
+	commit transaction
+	return 1
+end
+
 
 --Prueba de procedimiento
- --Eliminar_Cliente 4167344
+ --Eliminar_Cliente 3155160
 
 
 

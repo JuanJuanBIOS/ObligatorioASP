@@ -25,9 +25,50 @@ namespace ObligatorioASPNET
             BtnModificarClientes.Enabled = false;
             BtnEliminarClientes.Enabled = false;
             BtnBuscarClientes.Enabled = true;
-
             TBInDocumento.Enabled = true;
+
+            LblErrorClientes.ForeColor = System.Drawing.Color.Red;
+            LblErrorClientes.Text = "";
+            TBNombreClientes.Text = "";
+            TBTarjetaClientes.Text = "";
+            TBTelefonoClientes.Text = "";
+            TBDireccionClientes.Text = "";
+            TBFechaNacClientes.Text = "";
+
+            
+            
+            BloqueoCampos();
         }
+
+        private void BloqueoCampos()
+        {
+            TBNombreClientes.Enabled = false;
+            TBTarjetaClientes.Enabled = false;
+            TBTelefonoClientes.Enabled = false;
+            TBDireccionClientes.Enabled = false;
+            TBFechaNacClientes.Enabled = false;
+
+        }
+
+        private void HabilitoCampos()
+        {
+            TBNombreClientes.Enabled = true;
+            TBTarjetaClientes.Enabled = true;
+            TBTelefonoClientes.Enabled = true;
+            TBDireccionClientes.Enabled = true;
+            TBFechaNacClientes.Enabled = true;
+        }
+
+        private void ActivoBotonesA()
+        {
+            BtnCrearClientes.Enabled = true;
+            BtnModificarClientes.Enabled = false;
+            BtnConfirmarClientes.Enabled = false;
+            BtnEliminarClientes.Enabled = false;
+
+            HabilitoCampos();
+        }
+
 
         private void ActivoBotonesBM()
         {
@@ -35,13 +76,31 @@ namespace ObligatorioASPNET
             BtnCrearClientes.Enabled = false;
             BtnModificarClientes.Enabled = true;
             BtnEliminarClientes.Enabled = true;
+            BtnConfirmarClientes.Enabled = true;
             BtnBuscarClientes.Enabled = false;
 
+            BloqueoCampos();
+
         }
+
+        private void ActivoCamposM()
+        {
+            BtnCrearClientes.Enabled = false;
+            BtnModificarClientes.Enabled = false;
+            BtnConfirmarClientes.Enabled = true;
+            BtnEliminarClientes.Enabled = false;
+
+            HabilitoCampos();
+            TBInDocumento.Enabled = false;
+        }
+
+
 
 
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
+            this.LimpioFormulario();
+
             int cedula = 0;
 
             try
@@ -71,7 +130,7 @@ namespace ObligatorioASPNET
                 }
                 else
                 {
-                    LblErrorClientes.Text = "Objeto es nulo";
+                    LblErrorClientes.Text = "El Cliente no existe en la base de datos";
                 }
             }
             catch (Exception ex)
@@ -81,26 +140,56 @@ namespace ObligatorioASPNET
         }
 
 
-        protected void BtnModificar_Click(object sender, EventArgs e)
+        protected void BtnModificarClientes_Click(object sender, EventArgs e)
+        {
+            ActivoCamposM();
+        }
+
+        protected void BtnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void BtnConfirmarClientes_Click(object sender, EventArgs e)
         {
             try
             {
-                Cliente cli_m = (Cliente)Session["ClienteModificado"];
+                string oNombre = TBNombreClientes.Text;
+                Int32 oCedula = Convert.ToInt32(TBInDocumento.Text);
+                Int64 oTrajeta = Convert.ToInt64(TBTarjetaClientes.Text);
+                string oTelefono = TBTelefonoClientes.Text;
+                string oDireccion = TBDireccionClientes.Text;
+                DateTime oFecaNac = Convert.ToDateTime(TBFechaNacClientes.Text);
 
-                //modifico el objeto
-                cli_m.Nombre = TBNombreClientes.Text;
-                cli_m.Cedula=Convert.ToInt32(TBInDocumento.Text);
-                cli_m.Tarjeta = Convert.ToInt64(TBTarjetaClientes.Text);
-                cli_m.Direccion = TBDireccionClientes.Text;
-                cli_m.FechaNac = Convert.ToDateTime(TBFechaNacClientes.Text);
+                Cliente unCliente = new Cliente(oNombre, oCedula, oTrajeta, oTelefono, oDireccion, oFecaNac);
+
+                LogicaCliente.Modificar(unCliente);
+
                 this.ActivoBotonesBM();
-                //Cliente.Modificar(cli_m);
-                //lblError.Text = "Modificacion con éxito";
-                //this.LimpioFormulario();
             }
             catch (Exception ex)
             {
-               // lblError.Text = ex.Message;
+                LblErrorClientes.Text = ex.Message;
+            }
+
+        }
+
+        protected void BtnEliminarClientes_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                LogicaCliente.Eliminar(LogicaCliente.Buscar(Convert.ToInt32(TBInDocumento.Text)));
+                LimpioFormulario();
+                LblErrorClientes .ForeColor = System.Drawing.Color.Blue;
+                LblErrorClientes.Text = "El Cliente se ha sido eliminado correctamente";
+
+                
+            }
+            catch (Exception ex)
+            {
+                LblErrorClientes.ForeColor = System.Drawing.Color.Red;
+                LblErrorClientes.Text = ex.Message;
             }
         }
 

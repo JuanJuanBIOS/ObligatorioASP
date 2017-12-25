@@ -20,12 +20,17 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:Label ID="LblTituloClientes" runat="server" 
+            Text="Mantenimiento de Clientes" Font-Bold="True" Font-Size =Large ></asp:Label>
+        <br />
+    
         <asp:Label ID="LblInDocumento" runat="server" Text="Ingrese documento:"></asp:Label>
         <asp:TextBox ID="TBInDocumento" runat="server"></asp:TextBox>
-        <asp:Label ID="LblErrorClientes" runat="server" ForeColor="Red"></asp:Label>
         <asp:Button ID="BtnBuscarClientes" runat="server" Text="Buscar" 
             onclick="BtnBuscar_Click" />
         <br />
+        <br />
+        <asp:Label ID="LblErrorClientes" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         <table class="style1">
@@ -74,11 +79,23 @@
                 <td class="style2">
                     <asp:Button ID="BtnCrearClientes" runat="server" Text="Crear" />
                     <asp:Button ID="BtnModificarClientes" runat="server" Text="Modificar" Width="79px" 
-                        onclick="BtnModificar_Click" />
+                        onclick="BtnModificarClientes_Click" />
                 </td>
                 <td>
-                    <asp:Button ID="BtnEliminarClientes" runat="server" Text="Eliminar" />
+                    <asp:Button ID="BtnEliminarClientes" runat="server" Text="Eliminar" 
+                        onclick="BtnEliminarClientes_Click" />
+                    <asp:Button ID="BtnVolverClientes" runat="server" onclick="BtnVolver_Click" 
+                        Text="Volver al Menú Principal" />
                 </td>
+            </tr>
+            <tr>
+                <td class="style2">
+                    <asp:Button ID="BtnConfirmarClientes" runat="server" 
+                        Text="Confirmar modificación" Enabled="false" 
+                        onclick="BtnConfirmarClientes_Click"/>
+                </td>
+                <td>
+                    &nbsp;</td>
             </tr>
         </table>
         <br />

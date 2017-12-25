@@ -27,7 +27,8 @@
             NavigateUrl="~/Listados.aspx">Listado de vehículos disponibles</asp:HyperLink>
         <br />
         <br />
-        <asp:HyperLink ID="HyperLinkTotal" runat="server">Total recaudado por vehículo</asp:HyperLink>
+        <asp:HyperLink ID="HyperLinkTotal" runat="server" 
+            NavigateUrl="~/TotalRecaudadoPorVehiculos.aspx">Total recaudado por vehículo</asp:HyperLink>
     
     </div>
     </form>

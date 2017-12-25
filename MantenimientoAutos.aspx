@@ -37,8 +37,7 @@
     
         <asp:Label ID="LblInMatriculaAutos" runat="server" 
             Text="Ingrese la matrícula: "></asp:Label>
-        <asp:TextBox ID="TBInMatriculaAutos" runat="server" 
-            ontextchanged="TBInMatriculaAutos_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="TBInMatriculaAutos" runat="server"></asp:TextBox>
         <asp:Button ID="BtnBuscarAutos" runat="server" Text="Buscar" 
                         onclick="BtnBuscarAutos_Click" />
     

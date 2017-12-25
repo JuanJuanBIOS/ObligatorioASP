@@ -46,12 +46,37 @@ namespace EntidadesCompartidas
             {
                 if (value >= 100000 && value <= 99999999)
                 {
-                    _Cedula = value;
+                    int digitoingresado = _Cedula % 10;
+                    _Cedula = (_Cedula - digitoingresado) / 10;
 
-                }
-                else 
-                {
-                    throw new Exception("Error, cedula incorrecta");
+                    int dig1 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig1) / 10;
+                    int dig2 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig2) / 10;
+                    int dig3 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig3) / 10;
+                    int dig4 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig4) / 10;
+                    int dig5 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig5) / 10;
+                    int dig6 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig6) / 10;
+                    int dig7 = _Cedula % 10;
+                    _Cedula = (_Cedula - dig7) / 10;
+
+                    int aux = (dig7 * 2 % 10 + dig6 * 9 % 10 + dig5 * 8 % 10 + dig4 * 7 % 10 + dig3 * 6 % 10 + dig2 * 3 % 10 + dig1 * 4 % 10);
+                    int digitocalculado = (10 - aux % 10) % 10;
+
+                    if (digitoingresado == digitocalculado)
+                    {
+                        _Cedula = value;
+
+                    }
+
+                    else
+                    {
+                        throw new Exception("Error, cedula incorrecta");
+                    }
                 }
             }
         }
