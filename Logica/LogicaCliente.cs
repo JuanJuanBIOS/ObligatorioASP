@@ -25,5 +25,10 @@ namespace Logica
             PersistenciaCliente.Eliminar(unCli);
         }
 
+        public static void Crear(Cliente unCli)
+        {
+            PersistenciaCliente.Crear(unCli);
+        }
+
     }
 }

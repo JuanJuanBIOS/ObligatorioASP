@@ -29,7 +29,7 @@
         <asp:Label ID="LblErrorTot" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server">
+        <asp:GridView ID="GVAlquileres" runat="server">
         </asp:GridView>
         <br />
         <br />

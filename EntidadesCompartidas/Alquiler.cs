@@ -14,6 +14,11 @@ namespace EntidadesCompartidas
         private DateTime _FechaIni;
         private DateTime _FechaFin;
         private int _Costo;
+        private object p;
+        private object p_2;
+        private object p_3;
+        private object p_4;
+        private object p_5;
 
         //Propiedades
         public Cliente Cliente
@@ -132,6 +137,16 @@ namespace EntidadesCompartidas
             FechaInicio = pFechainicio;
             FechaFin = pFechafin;
             Costo = pCosto;
+        }
+
+        public Alquiler(object p, object p_2, object p_3, object p_4, object p_5)
+        {
+            // TODO: Complete member initialization
+            this.p = p;
+            this.p_2 = p_2;
+            this.p_3 = p_3;
+            this.p_4 = p_4;
+            this.p_5 = p_5;
         }
 
     }

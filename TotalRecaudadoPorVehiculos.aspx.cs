@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using EntidadesCompartidas;
 
 namespace ObligatorioASPNET
 {
@@ -16,9 +17,33 @@ namespace ObligatorioASPNET
 
         protected void BtnTotal_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+                Vehiculo unV = null;
+                unV = Logica.LogicaVehiculo.Buscar(TBInMatriculaTot.Text);
+                if (unV != null)
+                {
+                    //Obtengo los alquileres del auto
+                    List<EntidadesCompartidas.Alquiler> _lista = Logica.LogicaAlquiler.Listar_Alquileres_Por_Vehiculo(unV);
+
+                    GVAlquileres.DataSource = _lista;
+                    GVAlquileres.DataBind();
+                }
+                else
+                {
+                    TBInMatriculaTot.Text = "";
+                    GVAlquileres.DataSource = null;
+                    GVAlquileres.DataBind();
+                    LblErrorTot.Text = "Matricula no encontrada";
+                }
+            }
+            catch (Exception ex)
+            {
+                LblErrorTot.Text = ex.Message;
+            }
 
         }
-
         protected void BtnVolverUtilitario_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");

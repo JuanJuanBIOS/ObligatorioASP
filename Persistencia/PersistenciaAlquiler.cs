@@ -124,7 +124,48 @@ namespace Persistencia
             finally
             {
                 oConexion.Close();
-            }  
+            }
+        }
+
+
+        public static List<Alquiler> Listar_Alquileres_Por_Vehiculo(Vehiculo V)
+        {
+            List<Alquiler> _lista = new List<Alquiler>(); ;
+            SqlDataReader _Reader;
+
+            SqlConnection _Conexion = new SqlConnection(Conexion.STR);
+            SqlCommand _Comando = new SqlCommand("Listado_Alquileres_Por_Vehiculo", _Conexion);
+            _Comando.CommandType = CommandType.StoredProcedure;
+            _Comando.Parameters.AddWithValue("@vehiculo", V.Matricula);
+
+            try
+            {
+                _Conexion.Open();
+                _Reader = _Comando.ExecuteReader();
+
+                if (_Reader.HasRows)
+                {
+                    while (_Reader.Read())
+                    {
+                        Alquiler A = new Alquiler(_Reader["cliente"], _Reader["vehiculo"], _Reader["fechainicio"], _Reader["fechafin"], _Reader["costo"]);
+
+                        _lista.Add(A);
+                    }
+                }
+
+                _Reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Problemas con la base de datos:" + ex.Message);
+            }
+            finally
+            {
+                _Conexion.Close();
+            }
+
+            return _lista;
         }
     }
 }

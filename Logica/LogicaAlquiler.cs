@@ -18,5 +18,10 @@ namespace Logica
         {
             PersistenciaAlquiler.Confirmar_Alquiler(Alq);
         }
+
+        public static List<Alquiler> Listar_Alquileres_Por_Vehiculo(Vehiculo Veh)
+        {
+            return PersistenciaAlquiler.Listar_Alquileres_Por_Vehiculo(Veh);
+        }
     }
 }
