@@ -594,9 +594,9 @@ else
 				(@fechafin<=Alquileres.fechafin and @fechafin>=Alquileres.fechainicio) or
 				(@fechainicio<=Alquileres.fechainicio and @fechafin>=Alquileres.fechafin)))
 	-- Se traen los datos de las tablas Autos y Utilitarios para completar la consulta
-	--select TablaAux2.*, Utilitarios.tipo, Utilitarios.capacidad
-	--from (select #TablaAux.*, Autos.anclaje from #TablaAux left join Autos on #TablaAux.matricula=Autos.matricula)
-	--as TablaAux2 left join Utilitarios on TablaAux2.matricula=Utilitarios.matricula
+	select TablaAux2.*, Utilitarios.tipo, Utilitarios.capacidad
+	from (select #TablaAux.*, Autos.anclaje from #TablaAux left join Autos on #TablaAux.matricula=Autos.matricula)
+	as TablaAux2 left join Utilitarios on TablaAux2.matricula=Utilitarios.matricula
 	end
 go
 

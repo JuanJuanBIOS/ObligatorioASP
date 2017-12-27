@@ -32,7 +32,7 @@ namespace Persistencia
                 {
                     while (oReader.Read())
                     {
-                        Vehiculo V = new Vehiculo(oReader["matricula"].ToString(), oReader["marca"].ToString(), oReader["modelo"].ToString(), Convert.ToInt32(oReader["anio"]), Convert.ToInt32(oReader["cant_puertas"]), Convert.ToInt32(oReader["costo diario"]), oReader["categoria"].ToString());
+                        Vehiculo V = new Vehiculo(oReader["matricula"].ToString(), oReader["marca"].ToString(), oReader["modelo"].ToString(), Convert.ToInt32(oReader["anio"]), Convert.ToInt32(oReader["cant_puertas"]), Convert.ToInt32(oReader["costodiario"]), oReader["categoria"].ToString());
                         Disponibles.Add(V);
                     }
                 }

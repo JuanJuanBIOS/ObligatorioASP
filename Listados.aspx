@@ -74,6 +74,8 @@
             </td>
             <td class="style23" rowspan="3">
                 <asp:GridView ID="GVDisponiblesListado" runat="server" >
+                    <RowStyle ForeColor="#FF9966" />
+          
                 </asp:GridView>
             </td>
         </tr>
