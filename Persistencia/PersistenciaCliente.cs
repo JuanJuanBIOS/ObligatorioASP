@@ -59,6 +59,44 @@ namespace Persistencia
             return C;
         }
 
+        public static void Crear(Cliente unCli)
+        {
+            SqlConnection oConexion = new SqlConnection(Conexion.STR);
+            SqlCommand oComando = new SqlCommand("Crear_Cliente ", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+
+            oComando.Parameters.AddWithValue("@documento", unCli.Cedula);
+            oComando.Parameters.AddWithValue("@tarjeta", unCli.Tarjeta);
+            oComando.Parameters.AddWithValue("@nombre", unCli.Nombre);
+            oComando.Parameters.AddWithValue("@direccion", unCli.Direccion);
+            oComando.Parameters.AddWithValue("@telefono", unCli.Telefono);
+            oComando.Parameters.AddWithValue("@fechanac", unCli.FechaNac);
+
+            SqlParameter oRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
+            oRetorno.Direction = ParameterDirection.ReturnValue;
+            oComando.Parameters.Add(oRetorno);
+
+            try
+            {
+                oConexion.Open();
+                oComando.ExecuteNonQuery();
+
+                int oAfectados = (int)oComando.Parameters["@Retorno"].Value;
+
+                if (oAfectados == -2)
+                {
+                    throw new Exception("Error en la base de datos");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+        }
 
         public static void Modificar(Cliente unCli)
         {

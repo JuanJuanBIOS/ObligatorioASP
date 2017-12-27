@@ -66,7 +66,7 @@
                 <td class="style2">
                     Fecha de Nacimiento:</td>
                 <td>
-                    <asp:TextBox ID="TBFechaNacClientes" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TBFechaNacClientes" runat="server" EnableTheming="False"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -77,7 +77,8 @@
             </tr>
             <tr>
                 <td class="style2">
-                    <asp:Button ID="BtnCrearClientes" runat="server" Text="Crear" />
+                    <asp:Button ID="BtnCrearClientes" runat="server" Text="Crear" 
+                        onclick="BtnCrearClientes_Click" />
                     <asp:Button ID="BtnModificarClientes" runat="server" Text="Modificar" Width="79px" 
                         onclick="BtnModificarClientes_Click" />
                 </td>

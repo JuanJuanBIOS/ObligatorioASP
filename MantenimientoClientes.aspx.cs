@@ -65,7 +65,6 @@ namespace ObligatorioASPNET
             BtnModificarClientes.Enabled = false;
             BtnConfirmarClientes.Enabled = false;
             BtnEliminarClientes.Enabled = false;
-
             HabilitoCampos();
         }
 
@@ -123,14 +122,15 @@ namespace ObligatorioASPNET
                     TBTarjetaClientes.Text = Convert.ToString(Cli.Tarjeta);
                     TBTelefonoClientes.Text = Convert.ToString(Cli.Telefono);
                     TBDireccionClientes.Text = Cli.Direccion;
-                    TBFechaNacClientes.Text = Convert.ToString(Cli.FechaNac);
+                    TBFechaNacClientes.Text = Convert.ToString(Cli.FechaNac.ToShortDateString());
                     this.ActivoBotonesBM();
 
 
                 }
                 else
                 {
-                    LblErrorClientes.Text = "El Cliente no existe en la base de datos";
+                    LblErrorClientes.Text = "El Cliente no existe en la base de datos. Ingrese los datos y presione Crear";
+                    this.ActivoBotonesA();
                 }
             }
             catch (Exception ex)
@@ -193,6 +193,34 @@ namespace ObligatorioASPNET
             }
         }
 
+        protected void BtnCrearClientes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string oNombre = TBNombreClientes.Text;
+                Int32 oCedula = Convert.ToInt32(TBInDocumento.Text);
+                Int64 oTarjeta = Convert.ToInt64(TBTarjetaClientes.Text);
+                string oTelefono = TBTelefonoClientes.Text;
+                string oDireccion = TBDireccionClientes.Text;
+                DateTime oFecaNac = Convert.ToDateTime(TBFechaNacClientes.Text);
+
+                Cliente unCliente = new Cliente(oNombre,oCedula,oTarjeta,oTelefono,oDireccion,oFecaNac);
+
+
+                LogicaCliente.Crear(unCliente);
+                LblErrorClientes.ForeColor = System.Drawing.Color.Blue;
+                LblErrorClientes.Text = "El Cliente ha sido ingresado a la base de datos correctamente.";
+                BloqueoCampos();
+            }
+
+            catch (Exception ex)
+            {
+                LblErrorClientes.ForeColor = System.Drawing.Color.Red;
+                LblErrorClientes.Text = ex.Message;
+            }
+        }
+
+        }
+
 
     }
-}

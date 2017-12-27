@@ -646,3 +646,21 @@ select Vehiculos.matricula, Vehiculos.Marca, Vehiculos.modelo, Mayorreacudacion.
 inner join (select top 1 vehiculo as matricula, sum(costo) as total from Alquileres group by vehiculo order by sum(costo) desc) as Mayorreacudacion 
 on Vehiculos.matricula = Mayorreacudacion.matricula
 end
+go
+
+
+
+
+-- Se crea procedimiento para consultar los alquilres de un vehículo
+create procedure Listado_Alquileres_Por_Vehiculo
+-- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
+@vehiculo varchar(7)
+as
+begin
+-- Se seleccionan los alquileres
+select * from Alquileres 
+where vehiculo = @vehiculo
+end
+go
+
+Listado_Alquileres_Por_Vehiculo 'AAA1111'
