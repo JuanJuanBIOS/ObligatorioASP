@@ -14,8 +14,8 @@ namespace Persistencia
         public static List<Vehiculo> Disponibles_por_periodo(DateTime FechaIni, DateTime FechaFin)
         {
             List<Vehiculo> Disponibles = new List<Vehiculo>();
-            SqlDataReader oReader;            
-            
+            SqlDataReader oReader;
+
             SqlConnection oConexion = new SqlConnection(Conexion.STR);
             SqlCommand oComando = new SqlCommand("Disponibles_por_periodo ", oConexion);
             oComando.CommandType = CommandType.StoredProcedure;
@@ -51,6 +51,22 @@ namespace Persistencia
             }
 
             return Disponibles;
+        }
+
+
+        //creo metodo para buscar
+        public static Vehiculo Buscar(string matricula)
+        {
+            Vehiculo V = null;
+
+            V = PersistenciaAuto.Buscar(matricula);
+
+            if (V == null)
+            {
+                V = PersistenciaUtilitario.Buscar(matricula);
+            }
+
+            return V;
         }
     }
 }

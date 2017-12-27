@@ -119,7 +119,10 @@ INSERT INTO Utilitarios VALUES
 -- Se agregan datos a la tabla Alquileres
 INSERT INTO Alquileres VALUES
 ('CCC3333',3155160,'12/01/2017','12/15/2017',380),
-('AAA1111',4598108,'10/02/2017','10/08/2017',150)
+('AAA1111',4598108,'10/2/2017','10/8/2017',150),
+('AAA1111',2586951,'04/12/2017','3/5/2017',500),
+('AAA1111',3155160,'11/1/2017','11/10/2017',220),
+('AAA1111',3809175,'09/12/2017','10/23/2017',600)
 
 go
 
@@ -663,4 +666,5 @@ where vehiculo = @vehiculo
 end
 go
 
-Listado_Alquileres_Por_Vehiculo 'AAA1111'
+--Prueba de stored procedure
+--Listado_Alquileres_Por_Vehiculo 'AAA1111'

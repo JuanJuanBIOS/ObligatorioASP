@@ -30,6 +30,16 @@
         <br />
         <br />
         <asp:GridView ID="GVAlquileres" runat="server">
+            <Columns>
+                <asp:BoundField DataField="Cliente" HeaderText="Cliente" 
+                    SortExpression="Cliente" />
+                <asp:TemplateField HeaderText="Cliente">
+                <ItemTemplate>
+                <%#Eval ("Cliente.Cedula") %>
+                </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+
         </asp:GridView>
         <br />
         <br />

@@ -130,30 +130,34 @@ namespace Persistencia
 
         public static List<Alquiler> Listar_Alquileres_Por_Vehiculo(Vehiculo V)
         {
-            List<Alquiler> _lista = new List<Alquiler>(); ;
-            SqlDataReader _Reader;
+            List<Alquiler> Listado = new List<Alquiler>(); ;
+            SqlDataReader oReader;
 
-            SqlConnection _Conexion = new SqlConnection(Conexion.STR);
-            SqlCommand _Comando = new SqlCommand("Listado_Alquileres_Por_Vehiculo", _Conexion);
-            _Comando.CommandType = CommandType.StoredProcedure;
-            _Comando.Parameters.AddWithValue("@vehiculo", V.Matricula);
+            SqlConnection oConexion = new SqlConnection(Conexion.STR);
+            SqlCommand oComando = new SqlCommand("Listado_Alquileres_Por_Vehiculo", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+            oComando.Parameters.AddWithValue("@vehiculo", V.Matricula);
 
             try
             {
-                _Conexion.Open();
-                _Reader = _Comando.ExecuteReader();
+                oConexion.Open();
+                oReader = oComando.ExecuteReader();
 
-                if (_Reader.HasRows)
+                if (oReader.HasRows)
                 {
-                    while (_Reader.Read())
+                    while (oReader.Read())
                     {
-                        Alquiler A = new Alquiler(_Reader["cliente"], _Reader["vehiculo"], _Reader["fechainicio"], _Reader["fechafin"], _Reader["costo"]);
+                        Alquiler A = new Alquiler(PersistenciaCliente.Buscar(Convert.ToInt32(oReader["cliente"])),
+                            PersistenciaVehiculo.Buscar(oReader["vehiculo"].ToString()),
+                            Convert.ToDateTime(oReader["fechainicio"]),
+                            Convert.ToDateTime(oReader["fechafin"]),
+                            Convert.ToInt32(oReader["costo"]),false);
 
-                        _lista.Add(A);
+                        Listado.Add(A);
                     }
                 }
 
-                _Reader.Close();
+                oReader.Close();
             }
 
             catch (Exception ex)
@@ -162,10 +166,10 @@ namespace Persistencia
             }
             finally
             {
-                _Conexion.Close();
+                oConexion.Close();
             }
 
-            return _lista;
+            return Listado;
         }
     }
 }
