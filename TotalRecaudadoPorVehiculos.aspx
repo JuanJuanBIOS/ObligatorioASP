@@ -33,8 +33,22 @@
 &nbsp;<asp:Label ID="LblTotal" runat="server" Font-Bold="True"></asp:Label>
         <br />
         <br />
+<<<<<<< HEAD
         <asp:GridView ID="GVAlquileres" runat="server" AutoGenerateColumns = "false" >
         
+=======
+        <asp:GridView ID="GVAlquileres" runat="server" AutoGenerateColumns="False" 
+            onselectedindexchanged="GVAlquileres_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="Cliente.Cedula" HeaderText="Cliente" />
+                <asp:BoundField DataField="Vehiculo.Matricula" HeaderText="Matrícula" />
+                <asp:BoundField DataField="FechaInicio" DataFormatString="{0:d}" 
+                    HeaderText="Fecha Inicio" />
+                <asp:BoundField DataField="FechaFin" DataFormatString="{0:d}" 
+                    HeaderText="Fecha Fin" />
+                <asp:BoundField DataField="Costo" HeaderText="Costo" />
+            </Columns>
+>>>>>>> 599123f54b59b8ba6153558076e47da0f19ab414
 
         </asp:GridView>
         <br />

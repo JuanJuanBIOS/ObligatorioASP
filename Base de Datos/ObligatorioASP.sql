@@ -634,4 +634,4 @@ end
 
 go
 --Prueba de stored procedure
---Total_Vehiculo 'AAA11134'
+Total_Vehiculo 'AAA11134'
