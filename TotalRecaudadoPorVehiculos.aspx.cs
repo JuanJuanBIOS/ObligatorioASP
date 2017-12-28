@@ -54,6 +54,11 @@ namespace ObligatorioASPNET
             Response.Redirect("Default.aspx");
         }
 
+        protected void GVAlquileres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
