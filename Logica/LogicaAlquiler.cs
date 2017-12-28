@@ -23,5 +23,11 @@ namespace Logica
         {
             return PersistenciaAlquiler.Listar_Alquileres_Por_Vehiculo(Veh);
         }
+
+        public static Int32 Total_Vehiculo(Vehiculo Veh)
+        {
+            return PersistenciaAlquiler.Total_Vehiculo(Veh);
+        }
+
     }
 }

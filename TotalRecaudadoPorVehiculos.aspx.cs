@@ -26,6 +26,11 @@ namespace ObligatorioASPNET
                 {
                     //Obtengo los alquileres del auto
                     List<EntidadesCompartidas.Alquiler> _lista = Logica.LogicaAlquiler.Listar_Alquileres_Por_Vehiculo(unV);
+                    
+                    //Total del vehiculo en etiqueta
+                    Int32 Resultado = Logica.LogicaAlquiler.Total_Vehiculo(unV);
+                    LblTotal.Text = Resultado.ToString();
+
 
                     GVAlquileres.DataSource = _lista;
                     GVAlquileres.DataBind();

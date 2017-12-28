@@ -29,6 +29,10 @@
         <asp:Label ID="LblErrorTot" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
+        <asp:Label ID="LblTotalVehiculo" runat="server" Text="Total del Vehículo:"></asp:Label>
+&nbsp;<asp:Label ID="LblTotal" runat="server" Font-Bold="True"></asp:Label>
+        <br />
+        <br />
         <asp:GridView ID="GVAlquileres" runat="server">
             <Columns>
                 <asp:BoundField DataField="Cliente" HeaderText="Cliente" 

@@ -171,5 +171,41 @@ namespace Persistencia
 
             return Listado;
         }
+
+        public static Int32 Total_Vehiculo(Vehiculo V)
+        {
+            Int32 Resultado = 0;
+            SqlDataReader Reader;
+
+            SqlConnection oConexion = new SqlConnection(Conexion.STR);
+            SqlCommand oComando = new SqlCommand("Total_Vehiculo", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+
+            oComando.Parameters.AddWithValue("@vehiculo", V.Matricula.ToString());
+
+            SqlParameter oRetorno = new SqlParameter("@Tot", SqlDbType.Int);
+            oRetorno.Direction = ParameterDirection.Output;
+            oComando.Parameters.Add(oRetorno);
+            
+            try
+            {
+                oConexion.Open();
+                Reader = oComando.ExecuteReader();
+                
+                //obtengo valor
+                Resultado = Convert.ToInt32(oRetorno.Value);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+
+            return Resultado;
+        }
     }
 }

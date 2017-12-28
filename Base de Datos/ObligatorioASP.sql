@@ -603,56 +603,6 @@ else
 	end
 go
 
---Disponibles_por_periodo '01/01/2018', '06/01/2018'
-
-
-
--- Se crea procedimiento para obtener el total recaudado de un vehículo
-create procedure Total_Vehiculo
--- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
-@vehiculo varchar(7)
-as
--- Se chequea que exista la matrícula en la base de datos, y si no existe se muestra el error
-if not exists(select * from Vehiculos where matricula=@vehiculo)
-	begin
-	print 'El vehículo no existe en la base de datos'
-	return -1
-	end
-else
-	begin
-	begin transaction
-	declare @marca varchar(30)
-	declare @modelo varchar(30)
-	declare @recaudado float
-	select @marca = Vehiculos.marca from Vehiculos where Vehiculos.matricula=@vehiculo
-	select @modelo = Vehiculos.modelo from Vehiculos where Vehiculos.matricula=@vehiculo
-	select @recaudado = SUM(Alquileres.costo) from Alquileres where Alquileres.vehiculo=@vehiculo
-	if @@ERROR<>0
-			begin
-				rollback transaction
-				print 'No se pudo realizar el alquiler del vehículo'
-				return -2
-			end
-	commit transaction
-	print 'El vehículo '+@marca+' '+@modelo+', matrícula '+@vehiculo+' ha recaudado un total de $'+CONVERT(varchar(10),@recaudado)
-	return 1
-	end;
-
-go
-
--- Se crea procedimiento para encontrar el vehículo más rentable
-create procedure Mas_Rentable
-as
-begin
--- Se selecciona de la tabla vehículos el vehículo más rentable
-select Vehiculos.matricula, Vehiculos.Marca, Vehiculos.modelo, Mayorreacudacion.total from Vehiculos 
-inner join (select top 1 vehiculo as matricula, sum(costo) as total from Alquileres group by vehiculo order by sum(costo) desc) as Mayorreacudacion 
-on Vehiculos.matricula = Mayorreacudacion.matricula
-end
-go
-
-
-
 
 -- Se crea procedimiento para consultar los alquilres de un vehículo
 create procedure Listado_Alquileres_Por_Vehiculo
@@ -668,3 +618,20 @@ go
 
 --Prueba de stored procedure
 --Listado_Alquileres_Por_Vehiculo 'AAA1111'
+
+
+-- Se crea procedimiento para obtener total recaudado por vehiculo
+create procedure Total_Vehiculo
+-- Se define la variable de entrada al proceso, la cual va a ser la matrícula del vehículo
+@Tot int output,
+@vehiculo varchar(7)
+as
+begin
+-- Se seleccionan los alquileres
+select sum(costo) from Alquileres 
+where Alquileres.vehiculo = @vehiculo
+end
+
+go
+--Prueba de stored procedure
+--Total_Vehiculo 'AAA11134'

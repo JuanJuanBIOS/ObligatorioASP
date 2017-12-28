@@ -76,6 +76,24 @@ namespace ObligatorioASPNET {
         protected global::System.Web.UI.WebControls.Label LblErrorTot;
         
         /// <summary>
+        /// LblTotalVehiculo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTotalVehiculo;
+        
+        /// <summary>
+        /// LblTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTotal;
+        
+        /// <summary>
         /// GVAlquileres control.
         /// </summary>
         /// <remarks>
