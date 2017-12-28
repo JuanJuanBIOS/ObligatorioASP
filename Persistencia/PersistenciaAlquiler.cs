@@ -193,7 +193,9 @@ namespace Persistencia
                 Reader = oComando.ExecuteReader();
                 
                 //obtengo valor
-                Resultado = Convert.ToInt32(oRetorno.Value);
+                
+                    Resultado = Convert.ToInt32(oRetorno.Value);
+                
 
             }
             catch (Exception ex)
