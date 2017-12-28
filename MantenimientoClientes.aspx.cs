@@ -76,8 +76,7 @@ namespace ObligatorioASPNET
             BtnCrearClientes.Enabled = false;
             BtnModificarClientes.Enabled = true;
             BtnEliminarClientes.Enabled = true;
-            BtnConfirmarClientes.Enabled = true;
-            BtnBuscarClientes.Enabled = false;
+            BtnConfirmarClientes.Enabled = false;
 
             BloqueoCampos();
 
@@ -125,13 +124,14 @@ namespace ObligatorioASPNET
                     TBDireccionClientes.Text = Cli.Direccion;
                     TBFechaNacClientes.Text = Convert.ToString(Cli.FechaNac.ToShortDateString());
                     this.ActivoBotonesBM();
-
-
                 }
                 else
                 {
                     LblErrorClientes.Text = "El Cliente no existe en la base de datos. Ingrese los datos y presione Crear";
                     this.ActivoBotonesA();
+                    TBTarjetaClientes.Text = "0";
+                    TBTelefonoClientes.Text = "0";
+                    TBFechaNacClientes.Text = "01/01/1900";
                 }
             }
             catch (Exception ex)
@@ -165,8 +165,11 @@ namespace ObligatorioASPNET
                 Cliente unCliente = new Cliente(oNombre, oCedula, oTrajeta, oTelefono, oDireccion, oFecaNac);
 
                 LogicaCliente.Modificar(unCliente);
-
-                this.ActivoBotonesBM();
+                LblErrorClientes.ForeColor = System.Drawing.Color.Blue;
+                LblErrorClientes.Text = "El Cliente ha sido modificado correctamente.";
+                BloqueoCampos();
+                TBInDocumento.Enabled = true;
+                BtnConfirmarClientes.Enabled = false;
             }
             catch (Exception ex)
             {

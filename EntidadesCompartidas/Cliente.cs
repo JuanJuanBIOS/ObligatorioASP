@@ -31,7 +31,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("Error en el nombre de cliente");
+                    throw new Exception("Error: el campo 'Nombre' no puede estar vacío");
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace EntidadesCompartidas
                 }
                 else
                 {
-                    throw new Exception("Error en el numero de tarjeta de credito");
+                    throw new Exception("Error en el numero de tarjeta de credito. El mismo debe contener 16 dígitos");
                 }
             }
         }                      
@@ -134,7 +134,7 @@ namespace EntidadesCompartidas
                 }
                 else 
                 {
-                    throw new Exception("Error: Falta direccion");
+                    throw new Exception("Error: el campo 'Dirección' no puede estar vacío");
                 }
                 
             }

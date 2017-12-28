@@ -203,7 +203,7 @@ namespace ObligatorioASPNET
 
                 LogicaVehiculo.Modificar(unAuto);
                 LblErrorAutos.ForeColor = System.Drawing.Color.Blue;
-                LblErrorAutos.Text = "El Auto ha sido modificaro correctamente.";
+                LblErrorAutos.Text = "El Auto ha sido modificado correctamente.";
                 BloqueoCampos();
                 TBInMatriculaAutos.Enabled = true;
                 BtnConfirmarAutos.Enabled = false;
