@@ -26,6 +26,7 @@ namespace ObligatorioASPNET
 
             LblErrorListado.ForeColor = System.Drawing.Color.Red;
             LblErrorListado.Text = "";
+            LblListado.Text = "";
         }
 
         protected void CalInicioListado_SelectionChanged(object sender, EventArgs e)
@@ -80,6 +81,7 @@ namespace ObligatorioASPNET
                 }
                 else
                 {
+                    LblListado.Text = "Vehículos disponibles entre el " + TBInicioListado.Text +  " y el " + TBFinListado.Text;
                     GVDisponiblesListado.DataSource = LogicaVehiculo.Dispoibles_por_periodo(Convert.ToDateTime(TBInicioListado.Text), Convert.ToDateTime(TBFinListado.Text));
                     GVDisponiblesListado.DataBind();
                 }
@@ -88,6 +90,20 @@ namespace ObligatorioASPNET
             {
                 LblErrorListado.ForeColor = System.Drawing.Color.Red;
                 LblErrorListado.Text = ex.Message;
+            }
+        }
+
+        protected void GVDisponiblesListado_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Text = "Matrícula";
+                e.Row.Cells[1].Text = "Marca";
+                e.Row.Cells[2].Text = "Modelo";
+                e.Row.Cells[3].Text = "Año";
+                e.Row.Cells[4].Text = "Cantidad de Puertas";
+                e.Row.Cells[5].Text = "Costo Alquiler";
+                e.Row.Cells[6].Text = "Categoría";
             }
         }
 

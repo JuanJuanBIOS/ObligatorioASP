@@ -8,6 +8,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    <p>
+        <asp:Label ID="LblTitulo" runat="server" Text="Menú Principal" Font-Bold = "true" Font-Size=X-Large ></asp:Label>
+        <br />
+    </p>
     <div>
     
         <asp:HyperLink ID="HyperLinkClientes" runat="server" NavigateURL="~/MantenimientoClientes.aspx">Mantenimiento de Clientes</asp:HyperLink>

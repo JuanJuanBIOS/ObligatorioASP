@@ -73,8 +73,10 @@
                     onselectionchanged="CalInicioListado_SelectionChanged"></asp:Calendar>
             </td>
             <td class="style23" rowspan="3">
-                <asp:GridView ID="GVDisponiblesListado" runat="server">
-          
+                <asp:Label ID="LblListado" runat="server" ForeColor="Blue"></asp:Label>
+                <asp:GridView ID="GVDisponiblesListado" runat="server" 
+                    onrowdatabound="GVDisponiblesListado_RowDataBound">
+            
                 </asp:GridView>
             </td>
         </tr>

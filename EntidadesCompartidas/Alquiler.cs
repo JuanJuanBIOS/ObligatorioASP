@@ -99,8 +99,6 @@ namespace EntidadesCompartidas
         {
             get
             {
-                /*int cantDias = (_FechaFin.Subtract(_FechaIni)).Days;
-                return (this._Vehiculo.CostoAlquiler * cantDias);*/
                 return _Costo;
             }
             set

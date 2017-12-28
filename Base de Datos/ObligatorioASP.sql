@@ -628,7 +628,7 @@ create procedure Total_Vehiculo
 as
 begin
 -- Se seleccionan los alquileres
-select sum(costo) from Alquileres 
+select @Tot = sum(costo) from Alquileres 
 where Alquileres.vehiculo = @vehiculo
 end
 
