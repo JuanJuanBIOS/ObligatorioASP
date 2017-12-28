@@ -206,6 +206,7 @@ namespace ObligatorioASPNET
                 LblErrorAutos.Text = "El Auto ha sido modificaro correctamente.";
                 BloqueoCampos();
                 TBInMatriculaAutos.Enabled = true;
+                BtnConfirmarAutos.Enabled = false;
             }
 
             catch (Exception ex)

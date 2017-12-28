@@ -23,6 +23,7 @@ namespace ObligatorioASPNET
             //Bloqueo botones si no hay registro
             BtnCrearClientes.Enabled = false;
             BtnModificarClientes.Enabled = false;
+            BtnConfirmarClientes.Enabled = false;
             BtnEliminarClientes.Enabled = false;
             BtnBuscarClientes.Enabled = true;
             TBInDocumento.Enabled = true;

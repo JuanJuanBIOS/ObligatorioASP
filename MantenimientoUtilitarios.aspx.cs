@@ -214,6 +214,7 @@ namespace ObligatorioASPNET
                 LblErrorUtilitarios.Text = "El Utilitario ha sido modificado correctamente.";
                 BloqueoCampos();
                 TBInMatriculaUtilitarios.Enabled = true;
+                BtnConfirmarUtilitarios.Enabled = false;
             }
 
             catch (Exception ex)
